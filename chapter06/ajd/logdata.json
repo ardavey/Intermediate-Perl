@@ -1,0 +1,23 @@
+{
+   "laser3.copyroom.hut" : {
+      "ginger.girl.hut" : 8732
+   },
+   "gilligan.crew.hut" : {
+      "fileserver.copyroom.hut" : 12234,
+      "skipper.crew.hut" : 2008,
+      "maryann.girl.hut" : 26810
+   },
+   "skipper.crew.hut" : {
+      "fileserver.copyroom.hut" : 17068,
+      "professor.hut" : 14950
+   },
+   "maryann.girl.hut" : {
+      "professor.hut" : 16908
+   },
+   "ginger.girl.hut" : {
+      "laser3.copyroom.hut" : 12808
+   },
+   "professor.hut" : {
+      "skipper.crew.hut" : 17310
+   }
+}
