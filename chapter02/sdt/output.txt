@@ -1,0 +1,4 @@
+    /home/sandy/Intermediate-Perl/chapter02/sdt/output.txt
+    /home/sandy/Intermediate-Perl/chapter02
+    /home/sandy/Intermediate-Perl/chapter02/sdt/ex1.pl
+    /home/sandy/Intermediate-Perl/chapter02/sdt
