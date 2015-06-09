@@ -1,0 +1,63 @@
+>> Total for source 'professor.hut' is: 7382830
+professor.hut                  =>               maryann.girl.hut :    1122947 bytes
+professor.hut                  =>                  professor.hut :    1114174 bytes
+professor.hut                  =>               skipper.crew.hut :    1075693 bytes
+professor.hut                  =>              gilligan.crew.hut :    1073557 bytes
+professor.hut                  =>                ginger.girl.hut :    1047250 bytes
+professor.hut                  =>            laser3.copyroom.hut :    1018295 bytes
+professor.hut                  =>        fileserver.copyroom.hut :     930914 bytes
+
+>> Total for source 'gilligan.crew.hut' is: 7237638
+gilligan.crew.hut              =>               maryann.girl.hut :    1276577 bytes
+gilligan.crew.hut              =>            laser3.copyroom.hut :    1027800 bytes
+gilligan.crew.hut              =>                  professor.hut :    1013622 bytes
+gilligan.crew.hut              =>                ginger.girl.hut :    1012723 bytes
+gilligan.crew.hut              =>        fileserver.copyroom.hut :    1006399 bytes
+gilligan.crew.hut              =>               skipper.crew.hut :     966660 bytes
+gilligan.crew.hut              =>              gilligan.crew.hut :     933857 bytes
+
+>> Total for source 'maryann.girl.hut' is: 7235878
+maryann.girl.hut               =>        fileserver.copyroom.hut :    1140533 bytes
+maryann.girl.hut               =>              gilligan.crew.hut :    1122049 bytes
+maryann.girl.hut               =>                ginger.girl.hut :    1065580 bytes
+maryann.girl.hut               =>               skipper.crew.hut :    1001870 bytes
+maryann.girl.hut               =>            laser3.copyroom.hut :     986229 bytes
+maryann.girl.hut               =>               maryann.girl.hut :     965243 bytes
+maryann.girl.hut               =>                  professor.hut :     954374 bytes
+
+>> Total for source 'ginger.girl.hut' is: 7225624
+ginger.girl.hut                =>                ginger.girl.hut :    1152020 bytes
+ginger.girl.hut                =>               skipper.crew.hut :    1119766 bytes
+ginger.girl.hut                =>            laser3.copyroom.hut :    1078150 bytes
+ginger.girl.hut                =>               maryann.girl.hut :    1018548 bytes
+ginger.girl.hut                =>              gilligan.crew.hut :     993241 bytes
+ginger.girl.hut                =>        fileserver.copyroom.hut :     949221 bytes
+ginger.girl.hut                =>                  professor.hut :     914678 bytes
+
+>> Total for source 'fileserver.copyroom.hut' is: 7175028
+fileserver.copyroom.hut        =>              gilligan.crew.hut :    1151354 bytes
+fileserver.copyroom.hut        =>            laser3.copyroom.hut :    1092608 bytes
+fileserver.copyroom.hut        =>        fileserver.copyroom.hut :    1026030 bytes
+fileserver.copyroom.hut        =>                  professor.hut :    1002371 bytes
+fileserver.copyroom.hut        =>               maryann.girl.hut :     989869 bytes
+fileserver.copyroom.hut        =>                ginger.girl.hut :     956638 bytes
+fileserver.copyroom.hut        =>               skipper.crew.hut :     956158 bytes
+
+>> Total for source 'skipper.crew.hut' is: 7104065
+skipper.crew.hut               =>              gilligan.crew.hut :    1097882 bytes
+skipper.crew.hut               =>            laser3.copyroom.hut :    1050796 bytes
+skipper.crew.hut               =>                ginger.girl.hut :    1041603 bytes
+skipper.crew.hut               =>        fileserver.copyroom.hut :    1010486 bytes
+skipper.crew.hut               =>               maryann.girl.hut :     984691 bytes
+skipper.crew.hut               =>               skipper.crew.hut :     964162 bytes
+skipper.crew.hut               =>                  professor.hut :     954445 bytes
+
+>> Total for source 'laser3.copyroom.hut' is: 6948515
+laser3.copyroom.hut            =>            laser3.copyroom.hut :    1044817 bytes
+laser3.copyroom.hut            =>               skipper.crew.hut :    1037091 bytes
+laser3.copyroom.hut            =>              gilligan.crew.hut :    1029793 bytes
+laser3.copyroom.hut            =>        fileserver.copyroom.hut :    1007034 bytes
+laser3.copyroom.hut            =>                  professor.hut :     954483 bytes
+laser3.copyroom.hut            =>                ginger.girl.hut :     952001 bytes
+laser3.copyroom.hut            =>               maryann.girl.hut :     923296 bytes
+
