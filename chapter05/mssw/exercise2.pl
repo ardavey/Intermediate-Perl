@@ -14,6 +14,11 @@ open( my $fh, '<:encoding(UTF-8)', $filename )
   or die "could not open file '$filename' $!";
 
 while ( my $row = <$fh> ) {
+
+    # check if the line starts with a '#' and skip it
+    if ( $row =~ /^\s*#/ ) {
+        next;
+    }
     my ( $source, $destination, $bytes ) = split /\s+/, $row;
     $total_bytes{$source}{$destination} += $bytes;
 }
