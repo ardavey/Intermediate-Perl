@@ -51,9 +51,7 @@ open( my $write_fh, '>:encoding(UTF-8)', $output )
 # Now lets redump the file
 foreach my $source ( sort { $report{$b} cmp $report{$a} } keys %report ) {
     print $write_fh "$source\n";
-    foreach my $destination (
-        sort keys %{ $report{$source}->{destinations} }
-      )
+    foreach my $destination ( sort keys %{ $report{$source}->{destinations} } )
     {
         print $write_fh
           "  $destination $report{$source}->{destinations}{$destination}\n";
