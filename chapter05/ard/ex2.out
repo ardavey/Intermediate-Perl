@@ -1,0 +1,63 @@
+
+professor.hut sent a total of 7382830 bytes:
+	professor.hut => maryann.girl.hut: 1122947
+	professor.hut => professor.hut: 1114174
+	professor.hut => skipper.crew.hut: 1075693
+	professor.hut => gilligan.crew.hut: 1073557
+	professor.hut => ginger.girl.hut: 1047250
+	professor.hut => laser3.copyroom.hut: 1018295
+	professor.hut => fileserver.copyroom.hut: 930914
+
+gilligan.crew.hut sent a total of 7237638 bytes:
+	gilligan.crew.hut => maryann.girl.hut: 1276577
+	gilligan.crew.hut => laser3.copyroom.hut: 1027800
+	gilligan.crew.hut => professor.hut: 1013622
+	gilligan.crew.hut => ginger.girl.hut: 1012723
+	gilligan.crew.hut => fileserver.copyroom.hut: 1006399
+	gilligan.crew.hut => skipper.crew.hut: 966660
+	gilligan.crew.hut => gilligan.crew.hut: 933857
+
+maryann.girl.hut sent a total of 7235878 bytes:
+	maryann.girl.hut => fileserver.copyroom.hut: 1140533
+	maryann.girl.hut => gilligan.crew.hut: 1122049
+	maryann.girl.hut => ginger.girl.hut: 1065580
+	maryann.girl.hut => skipper.crew.hut: 1001870
+	maryann.girl.hut => laser3.copyroom.hut: 986229
+	maryann.girl.hut => maryann.girl.hut: 965243
+	maryann.girl.hut => professor.hut: 954374
+
+ginger.girl.hut sent a total of 7225624 bytes:
+	ginger.girl.hut => ginger.girl.hut: 1152020
+	ginger.girl.hut => skipper.crew.hut: 1119766
+	ginger.girl.hut => laser3.copyroom.hut: 1078150
+	ginger.girl.hut => maryann.girl.hut: 1018548
+	ginger.girl.hut => gilligan.crew.hut: 993241
+	ginger.girl.hut => fileserver.copyroom.hut: 949221
+	ginger.girl.hut => professor.hut: 914678
+
+fileserver.copyroom.hut sent a total of 7175028 bytes:
+	fileserver.copyroom.hut => gilligan.crew.hut: 1151354
+	fileserver.copyroom.hut => laser3.copyroom.hut: 1092608
+	fileserver.copyroom.hut => fileserver.copyroom.hut: 1026030
+	fileserver.copyroom.hut => professor.hut: 1002371
+	fileserver.copyroom.hut => maryann.girl.hut: 989869
+	fileserver.copyroom.hut => ginger.girl.hut: 956638
+	fileserver.copyroom.hut => skipper.crew.hut: 956158
+
+skipper.crew.hut sent a total of 7104065 bytes:
+	skipper.crew.hut => gilligan.crew.hut: 1097882
+	skipper.crew.hut => laser3.copyroom.hut: 1050796
+	skipper.crew.hut => ginger.girl.hut: 1041603
+	skipper.crew.hut => fileserver.copyroom.hut: 1010486
+	skipper.crew.hut => maryann.girl.hut: 984691
+	skipper.crew.hut => skipper.crew.hut: 964162
+	skipper.crew.hut => professor.hut: 954445
+
+laser3.copyroom.hut sent a total of 6948515 bytes:
+	laser3.copyroom.hut => laser3.copyroom.hut: 1044817
+	laser3.copyroom.hut => skipper.crew.hut: 1037091
+	laser3.copyroom.hut => gilligan.crew.hut: 1029793
+	laser3.copyroom.hut => fileserver.copyroom.hut: 1007034
+	laser3.copyroom.hut => professor.hut: 954483
+	laser3.copyroom.hut => ginger.girl.hut: 952001
+	laser3.copyroom.hut => maryann.girl.hut: 923296
