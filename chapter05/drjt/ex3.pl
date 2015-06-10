@@ -3,7 +3,7 @@ use 5.010;
 use warnings;
 use strict;
 
-# Slurp the file into a hash of hashrefs
+# This is literally the same code, only with default sorts, and a different format for the output. 40 minutes my arse.
 my %total_bytes;
 while ( <> ) {
   my ( $source, $dest, $bytes ) = split;
@@ -12,10 +12,9 @@ while ( <> ) {
 }
 
 foreach my $source ( sort keys %total_bytes ) {
-  my %dest_bytes = %{$total_bytes{$source}};
-  delete $dest_bytes{total};
+  delete $total_bytes{$source}{total};
   say $source;
-  foreach my $dest ( sort keys %dest_bytes ) {
-    printf "  %s %s\n", $dest, $dest_bytes{$dest};
+  foreach my $dest ( sort keys %{ $total_bytes{$source} } ) {
+    printf "  %s %s\n", $dest, $total_bytes{$source}{$dest};
   }
 }
