@@ -1,0 +1,1 @@
+The code is trying to define a hash using the syntax for creating a reference to an anonymous hash. 'my $passenger_1 = { ... };' would be valid.
