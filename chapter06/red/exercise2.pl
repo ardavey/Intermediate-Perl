@@ -18,7 +18,7 @@ if ( -s $db ) {
 my $fn = shift @ARGV // 'coconet.dat';
 open my $fh, '<', $fn;
 
-while( <$fh> ) {
+while ( <$fh> ) {
   next if /^\s*(#.*)?$/;
   my ( $src, $dest, $bytes ) = split;
   $stats{$src}{$dest} += $bytes;
@@ -27,7 +27,7 @@ while( <$fh> ) {
 close $fh;
 
 open my $out, '>:utf8', $db;
-print $out encode_json( \%stats, { pretty => 1 } );
+print $out to_json( \%stats, { utf8 => 1, pretty => 1 } );
 close $out;
 
 for my $src ( sort keys %stats ) {
