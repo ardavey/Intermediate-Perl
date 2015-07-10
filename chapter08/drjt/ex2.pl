@@ -9,10 +9,10 @@ my %fh;
 
 while ( <> ) {
   my ( $name, $data ) = /^(.*):(.*)$/;
-  next if ! defined $name;
+  next if ! $name;
   $name = lc $name;
   if ( !defined $fh{$name} ) {
     open $fh{$name}, '>>', "$name.info";
   }
-  say {$fh{name}} $data;
+  say {$fh{$name}} $data;
 }

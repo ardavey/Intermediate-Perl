@@ -10,7 +10,7 @@ my $file = 'output.file';
 my $string;
 
 print "please select type - file/scalar/both: ";
-my $type = lc <STDIN>;
+chomp( my $type = lc <STDIN> );
 
 my $fh;
 if ( $type eq 'file' ) {
@@ -21,8 +21,8 @@ elsif ( $type eq 'scalar' ) {
 }
 elsif ( $type eq 'both' ) {
   open my $scalarft, '>>', \ $string;
-  open my $fileft, '>>', $name;
-  $fh = IO::Tee->new( $scalarft, fileft );
+  open my $fileft, '>>', $file;
+  $fh = IO::Tee->new( $scalarft, $fileft );
 }
 else {
   die "filetype not recongnized\n";
