@@ -4,14 +4,14 @@ use strict;
 use warnings;
 use Regexp::Assemble
 
-my $ra = Regexp::Assemble->new;
+  my $ra = Regexp::Assemble->new;
 
 while ( <> ) {
- eval {  $ra->add( "\Q$_" ); };
-  
- if ( $@ ) {
-   die "Invalid regex: $@";
- }
+  eval { $ra->add( "\Q$_" ); };
+
+  if ( $@ ) {
+    die "Invalid regex: $@";
+  }
 }
 
 my $combined_regex = $ra->re;
@@ -24,9 +24,9 @@ while ( my $line = <STDIN> ) {
     last;
   }
 
-     if ( $line =~ $combined_regex ) {
-       printf( "Line number %s, %s matches regex %s\n", $., $line, $regex );
-     }
+  if ( $line =~ $combined_regex ) {
+    printf( "Line number %s, %s matches regex %s\n", $., $line, $regex );
+  }
 
 }
 

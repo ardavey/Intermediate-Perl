@@ -5,14 +5,13 @@ use warnings;
 
 use v5.12;
 
-my $patterns = {
-  Gilligan   => qr/(?:Wiley )?Gilligan/,
-  'Mary-Ann' => qr/Mary-Ann/,
-  Ginger     => qr/Ginger/,
-  Professor  => qr/(?:The )?Professor/,
-  Skipper    => qr/Skipper/,
-  'A Howell' => qr/Mrs?. Howell/,
-};
+my $patterns = { Gilligan => qr/(?:Wiley )?Gilligan/,
+                 'Mary-Ann' => qr/Mary-Ann/,
+                 Ginger => qr/Ginger/,
+                 Professor => qr/(?:The )?Professor/,
+                 Skipper => qr/Skipper/,
+                 'A Howell' => qr/Mrs?. Howell/,
+                 };
 
 my $string = 'There is Mrs. Howell, Ginger, and Gilligana';
 
@@ -23,19 +22,19 @@ my $match_pattern = matched( substr( $string, $rightmost ), $patterns );
 printf( "Rightmost match is at position %s with pattern %s", $rightmost, $match_pattern );
 
 sub rightmost {
-  my( $string, $patterns ) = @_;
-  
-  my $rightmost = -1;
-  while( my( $i, $pattern ) = each $patterns ) {
-	my $position = $string =~ m/$pattern/ ? $-[0] : -1;
-	$rightmost = $position if $position > $rightmost;
-	}
+  my ( $string, $patterns ) = @_;
 
-return $rightmost; 		
+  my $rightmost = -1;
+  while ( my ( $i, $pattern ) = each $patterns ) {
+    my $position = $string =~ m/$pattern/ ? $-[0] : -1;
+    $rightmost = $position if $position > $rightmost;
+  }
+
+  return $rightmost;
 }
 
 sub matched {
-  my( $string, $patterns ) = @_;
+  my ( $string, $patterns ) = @_;
   foreach my $pattern ( values $patterns ) {
     if ( $string =~ m/$pattern/ ) {
       return $pattern

@@ -7,12 +7,12 @@ my $regex;
 my @regexes;
 
 while ( <> ) {
- eval { $regex = qr/$_/; };
-  
- if ( $@ ) {
-   die "Invalid regex: $@";
- }
- push @regexes, $regex;
+  eval { $regex = qr/$_/; };
+
+  if ( $@ ) {
+    die "Invalid regex: $@";
+  }
+  push @regexes, $regex;
 
 }
 print @regexes;
@@ -25,9 +25,9 @@ while ( my $line = <STDIN> ) {
     last;
   }
   foreach my $regex ( @regexes ) {
-     if ( $line =~ $regex ) {
-       printf( "Line number %s, %s matches regex %s\n", $., $line, $regex );
-     }
+    if ( $line =~ $regex ) {
+      printf( "Line number %s, %s matches regex %s\n", $., $line, $regex );
+    }
   }
 }
 
