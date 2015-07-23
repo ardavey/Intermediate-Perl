@@ -2,14 +2,15 @@
 
 use strict;
 use warnings;
-use Benchmark qw(:all) ;
+use Benchmark qw(:all);
 
 my @files = glob '*';
 
-timethese(0, {
-	'Lazy' => "lazy( glob '*' )",
-	'Schwartzian' => "schwartz( glob '*' )",
-    });
+timethese( 0, {
+             'Lazy' => "lazy( @files )",
+             'Schwartzian' => "schwartz( @files )",
+             }
+           );
 
 
 # Lazy style
@@ -19,15 +20,15 @@ sub lazy {
 
 # Power of the Schwartz
 sub schwartz {
-  my @sorted = 
+  my @sorted =
     map { $_->[0] }
     sort { $a->[1] <=> $b->[1] }
-    map [ $_, get_size($_) ],
+    map [ $_, get_size( $_ ) ],
     @_;
 }
 
 sub get_size {
   my ( $file ) = @_;
-  
-  return ( -s $file ); 
+
+  return ( -s $file );
 }

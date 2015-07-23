@@ -11,7 +11,7 @@ my $breadth_data = dump_data_for_path( $path, data_for_path( $path, 3, 'breadth'
 my $depth_data = dump_data_for_path( $path, data_for_path( $path, 3, 'depth' ), 0 );
 
 sub data_for_path {
-  my( $path, $threshold, $format ) = @_;
+  my ( $path, $threshold, $format ) = @_;
 
   if ( $format !~ /^(breadth|depth)$/ ) {
     print 'Invalid format!';
@@ -22,20 +22,18 @@ sub data_for_path {
 
   my @queue = ( [ $path, 0, $data ] );
 
-  while( my $next = shift @queue ) {
-    my( $path, $level, $ref ) = @$next;
+  while ( my $next = shift @queue ) {
+    my ( $path, $level, $ref ) = @$next;
 
     my $basename = basename( $path );
 
     $ref->{$basename} = do {
-      if( -f $path or -l $path ) { undef }
+      if ( -f $path or -l $path ) { undef }
       else {
         my $hash = {};
-        if( $level < $threshold ) {
-          opendir my ($dh), $path;
-          my @new_paths = map {
-            catfile( $path, $_ )
-            } grep { ! /^\.\.?\z/ } readdir $dh;
+        if ( $level < $threshold ) {
+          opendir my ( $dh ), $path;
+          my @new_paths = map { catfile( $path, $_ ) } grep { !/^\.\.?\z/ } readdir $dh;
           if ( $format eq 'breadth' ) {
             push @queue, map { [ $_, $level + 1, $hash ] } @new_paths;
           }
@@ -49,20 +47,20 @@ sub data_for_path {
   }
 
   $data;
-}
+} ## end sub data_for_path
 
 sub dump_data_for_path {
   my ( $path, $data, $tabs ) = @_;
 
-  if (not defined $data) { # plain file
+  if ( not defined $data ) { # plain file
     print "	" x $tabs, "$path\n";
     return;
   }
 
   if ( keys $data ) {
     print "	" x $tabs, $path, ", with contents of:\n";
-    foreach (sort keys $data) {
-      dump_data_for_path("$path/$_", $data->{$_}, $tabs + 1);
+    foreach ( sort keys $data ) {
+      dump_data_for_path( "$path/$_", $data->{$_}, $tabs + 1 );
     }
   }
   else {
