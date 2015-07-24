@@ -1,0 +1,3 @@
+Benchmark: running cyborg_friendly_sort, human_friendly_sort for at least 10 CPU seconds...
+cyborg_friendly_sort: 11 wallclock secs ( 5.34 usr +  5.42 sys = 10.76 CPU) @ 56637.83/s (n=609423)
+human_friendly_sort: 11 wallclock secs ( 4.02 usr +  6.57 sys = 10.59 CPU) @ 57469.59/s (n=608603)
