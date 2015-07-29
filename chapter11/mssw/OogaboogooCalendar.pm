@@ -1,4 +1,4 @@
-package Oogaboogoo;
+package OogaboogooCalendar;
 
 use strict;
 use warnings;
@@ -7,8 +7,8 @@ use Data::Dumper;
 
 use constant {
     DAY => [ qw( ark dip wap sen pop sep kir ) ],
-    MONTTH => [ qw( diz pod bod rod sip wax lin sen kun fiz nap dep ) ],
-}
+    MONTH => [ qw( diz pod bod rod sip wax lin sen kun fiz nap dep ) ],
+};
 
 sub number_to_day {
     my $num = shift;
@@ -19,11 +19,12 @@ sub number_to_day {
 }
 
 sub number_to_month {
-    $num = shift;
+    my $num = shift;
     if ($num > 11 || $num < 0 ){
         die "Number provided not in range of months (0 - 11)";
     }
-    return MONTH->[$sum];
+    return MONTH->[$num];
 }
 
 
+'blarg';
