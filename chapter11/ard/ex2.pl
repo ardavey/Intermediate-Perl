@@ -2,8 +2,6 @@
 use strict;
 use warnings;
 
-use 5.010;
-
 use Oogaboogoo::Date qw( day_name month_name );
 use Time::Piece;
 
