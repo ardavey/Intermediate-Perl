@@ -1,0 +1,4 @@
+do{ my $x = {
+       'install_base' => '/home/ajd/perl5'
+     };
+$x; }
