@@ -1,0 +1,125 @@
+do{ my $x = [
+       {
+         'ARGV' => []
+       },
+       {},
+       {
+         'conflicts' => {},
+         'requires' => {},
+         'build_requires' => {
+                               'Test::More' => 0
+                             },
+         'test_files' => undef,
+         'mymetafile' => 'MYMETA.yml',
+         'create_makefile_pl' => 'traditional',
+         'build_script' => 'Build',
+         'orig_dir' => 'C:/Users/Simon/workspace/perl-training/Animal',
+         'destdir' => undef,
+         'debug' => undef,
+         'build_class' => 'Module::Build',
+         'auto_configure_requires' => 1,
+         'quiet' => undef,
+         'base_dir' => 'C:/Users/Simon/workspace/perl-training/Animal',
+         'metafile' => 'META.yml',
+         'bindoc_dirs' => [
+                            'blib\\script'
+                          ],
+         'release_status' => 'stable',
+         'get_options' => {},
+         'blib' => 'blib',
+         'scripts' => undef,
+         'recursive_test_files' => undef,
+         'meta_merge' => {},
+         'metafile2' => 'META.json',
+         'dist_suffix' => undef,
+         'recommends' => {},
+         'pm_files' => undef,
+         'use_tap_harness' => 0,
+         'mb_version' => '0.4211',
+         'prefix_relpaths' => {},
+         'extra_linker_flags' => [],
+         'installdirs' => 'site',
+         'share_dir' => undef,
+         'original_prefix' => {},
+         'dynamic_config' => 1,
+         'dist_version_from' => 'lib/Animal.pm',
+         'dist_abstract' => undef,
+         'dist_name' => 'Animal',
+         'test_file_exts' => [
+                               '.t'
+                             ],
+         'perl' => 'C:\\Strawberry\\perl\\bin\\perl.exe',
+         'magic_number' => undef,
+         'c_source' => undef,
+         'PL_files' => undef,
+         'dist_version' => '0.01',
+         'prefix' => undef,
+         'mymetafile2' => 'MYMETA.json',
+         'license' => 'artistic_2',
+         'needs_compiler' => '',
+         'allow_mb_mismatch' => 0,
+         'pureperl_only' => 0,
+         'pod_files' => undef,
+         'install_path' => {},
+         'recurse_into' => [],
+         'program_name' => undef,
+         'create_readme' => undef,
+         'debugger' => undef,
+         'has_config_data' => undef,
+         'install_base' => undef,
+         'prereq_action_types' => [
+                                    'requires',
+                                    'build_requires',
+                                    'test_requires',
+                                    'conflicts',
+                                    'recommends'
+                                  ],
+         'config_dir' => '_build',
+         'cpan_client' => 'cpan',
+         'allow_pureperl' => 0,
+         'build_elements' => [
+                               'PL',
+                               'support',
+                               'pm',
+                               'xs',
+                               'share_dir',
+                               'pod',
+                               'script'
+                             ],
+         'install_base_relpaths' => {},
+         'verbose' => undef,
+         'use_rcfile' => 1,
+         'extra_compiler_flags' => [],
+         'pollute' => undef,
+         'build_bat' => 0,
+         'meta_add' => {},
+         'html_css' => '',
+         'extra_manify_args' => undef,
+         'include_dirs' => [],
+         'configure_requires' => {
+                                   'Module::Build' => 0
+                                 },
+         'bundle_inc_preload' => [],
+         'dist_author' => [
+                            'spg <simon.gross@datacash.com>'
+                          ],
+         'install_sets' => {},
+         'test_requires' => {},
+         'xs_files' => undef,
+         'module_name' => 'Animal',
+         'sign' => undef,
+         'config' => undef,
+         'create_packlist' => 1,
+         'script_files' => undef,
+         'bundle_inc' => [],
+         '_added_to_INC' => [],
+         'tap_harness_args' => {},
+         'create_license' => undef,
+         'libdoc_dirs' => [
+                            'blib\\lib',
+                            'blib\\arch'
+                          ],
+         'autosplit' => undef
+       }
+     ];
+$x; }
