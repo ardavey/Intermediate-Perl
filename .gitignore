@@ -1,20 +1,20 @@
 # General stuff
 Intermediate-Perl.komodoproject
-**/coconet.dat
+*/*/coconet.dat
 
 # Perl package/dist build stuff - should catch everyone's
-**/blib/
-**/_build/
-**/cover_db/
-**/inc/
-**/Build
-**/Build.bat
-**/.last_cover_stats
-**/Makefile
-**/Makefile.old
-**/MANIFEST.bak
-**/META.yml
-**/MYMETA.yml
-**/nytprof.out
-**/pm_to_blib
-**/MYMETA.json
+*/*/blib/
+*/*/_build/
+*/*/cover_db/
+*/*/inc/
+*/*/Build
+*/*/Build.bat
+*/*/.last_cover_stats
+*/*/Makefile
+*/*/Makefile.old
+*/*/MANIFEST.bak
+*/*/META.yml
+*/*/MYMETA.yml
+*/*/nytprof.out
+*/*/pm_to_blib
+*/*/MYMETA.json
