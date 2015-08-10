@@ -39,14 +39,17 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
-sub function1 {
+sub speak {
+  my $class = shift;
+  print "a $class goes ", $class->sound, "!\n";
 }
 
 =head2 function2
 
 =cut
 
-sub function2 {
+sub sound {
+  die 'You have to define sound() in a subclass'
 }
 
 =head1 AUTHOR
