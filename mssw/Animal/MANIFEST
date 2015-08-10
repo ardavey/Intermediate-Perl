@@ -1,0 +1,16 @@
+Build.PL
+Changes
+lib/Animal.pm
+lib/Cow.pm
+MANIFEST			This list of files
+README
+t/00-load.t
+t/manifest.t
+t/pod-coverage.t
+t/pod.t
+t/t
+t/xt
+xt/boilerplate.t
+Makefile.PL
+META.yml
+META.json
