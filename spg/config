@@ -1,0 +1,5 @@
+author: spg
+email: simon.gross@datacash.com
+builder: Module::Build
+verbose: 1
+plugins: Module::Starter::AddModule
