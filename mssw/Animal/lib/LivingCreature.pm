@@ -16,7 +16,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -139,20 +138,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =cut
 
 sub speak {
-  my $class = shift;
-  my ( $say ) = @_;
-  
-  if( defined $say ){
-    print "a $class says: $say!\n";
-  }
-  else{
-    print "a $class goes ", $class->sound, "!\n";
-  }
+    my $class = shift;
+    my ($say) = @_;
+
+    if ( defined $say ) {
+        print "a $class says: $say!\n";
+    }
+    else {
+        print "a $class goes ", $class->sound, "!\n";
+    }
 }
 
 sub sound {
-    die "Sound is unimplemented!!!"
+    die "Sound is unimplemented!!!";
 }
 
-
-1; # End of LivingCreature
+1;    # End of LivingCreature

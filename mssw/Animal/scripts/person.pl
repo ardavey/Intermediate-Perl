@@ -10,6 +10,6 @@ use Mouse;
 use Cow;
 
 Cow->speak();
-Mouse->speak( 'Braaaiiiins');
+Mouse->speak('Braaaiiiins');
 Person->speak();
 Person->speak('Hello, World');

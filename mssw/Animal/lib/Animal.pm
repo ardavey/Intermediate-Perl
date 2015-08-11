@@ -18,7 +18,6 @@ our $VERSION = '0.01';
 
 use parent qw( LivingCreature );
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -141,8 +140,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =cut
 
 sub speak {
-  my $class = shift;
-  $class->SUPER::speak();
+    my $class = shift;
+    $class->SUPER::speak();
 }
 
-1; # End of Animal
+1;    # End of Animal

@@ -11,35 +11,34 @@ use Sheep;
 
 use Data::Dumper;
 
-print "Please enter some animals to add to your barnyard. (Type 'done' when finished)\n";
+print
+"Please enter some animals to add to your barnyard. (Type 'done' when finished)\n";
 
 my @barnyard;
-while ( <STDIN> ){
+while (<STDIN>) {
     chomp;
     my $animal = ucfirst lc $_;
-    
-    if( $animal eq 'Done'){
+
+    if ( $animal eq 'Done' ) {
         last;
     }
 
-    eval { 
-        $animal->sound;
-    };
-    if($@) {
-        print "We have no ".$animal."s here!";
+    eval { $animal->sound; };
+    if ($@) {
+        print "We have no " . $animal . "s here!";
     }
-    else{
+    else {
         push @barnyard, $animal;
     }
-    
+
 }
 
-if( ! scalar @barnyard ){
+if ( !scalar @barnyard ) {
     print "The barnyard is very quiet.... Too quiet....";
     exit 0;
 }
 
-foreach my $animal (@barnyard){
+foreach my $animal (@barnyard) {
     $animal->speak;
 }
 

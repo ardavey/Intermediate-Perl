@@ -18,7 +18,6 @@ our $VERSION = '0.01';
 
 use parent qw(Animal);
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -141,7 +140,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =cut
 
 sub sound {
-    return 'neighhhh'
+    return 'neighhhh';
 }
 
-1; # End of Horse
+1;    # End of Horse

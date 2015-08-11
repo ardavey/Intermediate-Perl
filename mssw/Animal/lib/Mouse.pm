@@ -18,7 +18,6 @@ our $VERSION = '0.01';
 
 use parent qw(Animal);
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -150,4 +149,4 @@ sub sound {
     return 'squeak';
 }
 
-1; # End of Mouse
+1;    # End of Mouse

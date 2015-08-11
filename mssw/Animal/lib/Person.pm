@@ -142,4 +142,4 @@ sub sound {
     return "hmmmmmm";
 }
 
-1; # End of Person
+1;    # End of Person
