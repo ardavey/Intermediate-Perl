@@ -3,13 +3,17 @@ Changes
 lib/Animal.pm
 lib/Cow.pm
 lib/Horse.pm
+lib/LivingCreature.pm
 lib/Mouse.pm
+lib/Person.pm
 lib/Sheep.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json
 META.yml
 README
+scripts/ch13exercise2.pl
+scripts/person.pl
 t/00-load.t
 t/manifest.t
 t/pod-coverage.t
