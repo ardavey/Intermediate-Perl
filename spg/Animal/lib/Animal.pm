@@ -16,8 +16,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use vars qw(@ISA);
-@ISA = qw(LivingCreature);
 
 =head1 SYNOPSIS
 
@@ -37,30 +35,18 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
+=head2 function1
 
 =cut
 
-sub speak {
-  my ( $self ) = @_;
-
-  printf "%s says \"%s\"!\n", $self->get_type(), $self->get_voice();
+sub function1 {
 }
 
-=head2 get_type
+=head2 function2
 
 =cut
 
-sub get_type {
-  return "Unknown beast, shrouded in darkness,";
-}
-
-=head2 get_voice
-
-=cut
-
-sub get_voice {
-  return "welcome to the jungle";
+sub function2 {
 }
 
 =head1 AUTHOR
