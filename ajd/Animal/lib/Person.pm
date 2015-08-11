@@ -1,4 +1,4 @@
-package Animal;
+package Person;
 
 use 5.006;
 use strict;
@@ -8,7 +8,7 @@ use parent qw( LivingCreature );
 
 =head1 NAME
 
-Animal - The great new Animal!
+Person - The great new Person!
 
 =head1 VERSION
 
@@ -21,31 +21,42 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Intended to be an abstract class for other animals
+Quick summary of what the module does.
+
+Perhaps a little code snippet.
+
+    use Person;
+
+    my $foo = Person->new();
+    ...
+
+=head1 EXPORT
+
+A list of functions that can be exported.  You can delete this section
+if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
-
-Will cause an animal to make noise, provided their sound()
-method has been implemented
+=head2 function1
 
 =cut
 
 sub speak {
 
   my $class = shift;
-  $class->SUPER::speak( $class->sound );
+  my $sound = shift || $class->sound;
+
+  $class->SUPER::speak( $sound );
 }
 
-=head2 sound
-
-The noise made by an animal. This must be overidden.
+=head2 function2
 
 =cut
 
 sub sound {
-  die 'You must define sound() in a subclass';
+
+  my $class = shift;
+  return "hmmmmmm",
 }
 
 =head1 AUTHOR
@@ -65,7 +76,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Person
 
 
 You can also look for information at:
@@ -137,4 +148,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Person
