@@ -1,4 +1,4 @@
-package Cow;
+package Mouse;
 
 use 5.006;
 use strict;
@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Cow - The great new Cow!
+Mouse - The great new Mouse!
 
 =head1 VERSION
 
@@ -25,9 +25,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use Mouse;
 
-    my $foo = Cow->new();
+    my $foo = Mouse->new();
     ...
 
 =head1 EXPORT
@@ -68,7 +68,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Mouse
 
 
 You can also look for information at:
@@ -140,8 +140,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-sub sound {
-    return 'moooooo';
+sub speak {
+    my $class = shift;
+    $class->SUPER::speak(@_);
+    print "[but you can barely hear it!]\n";
 }
 
-1; # End of Cow
+sub sound {
+    return 'squeak';
+}
+
+1; # End of Mouse

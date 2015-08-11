@@ -2,6 +2,8 @@
 Intermediate-Perl.komodoproject
 chapter*/*/coconet.dat
 *.swp
+.codio
+.settings
 
 # Perl package/dist build stuff - _should_ catch everyone's
 *.tar.gz
@@ -20,3 +22,4 @@ MYMETA.yml
 nytprof.out
 pm_to_blib
 MYMETA.json
+*.bak

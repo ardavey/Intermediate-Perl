@@ -138,4 +138,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
+sub speak {
+  my $class = shift;
+  
+  print "a $class goes ", $class->sound, "!\n";
+}
+
+sub sound {
+    die "Sound is unimplemented!!!"
+}
+
 1; # End of Animal
