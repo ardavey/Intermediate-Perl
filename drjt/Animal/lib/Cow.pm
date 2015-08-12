@@ -1,8 +1,11 @@
+#!/usr/bin/perl -Ilib
 package Cow;
 
 use 5.006;
 use strict;
 use warnings;
+
+use parent qw(Animal);
 
 =head1 NAME
 
@@ -39,15 +42,7 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
+sub sound { 'moooo' }
 
 =head1 AUTHOR
 
