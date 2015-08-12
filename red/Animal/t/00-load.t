@@ -1,13 +1,17 @@
 #!perl -T
-use 5.006;
+use v5.10.1;
 use strict;
 use warnings;
 use Test::More;
 
-plan tests => 1;
+plan tests => 7;
 
 BEGIN {
-    use_ok( 'Animal' ) || print "Bail out!\n";
+  foreach my $pkg ( qw( LivingCreature Animal Person Cow Horse Sheep Mouse ) ) {
+    use_ok( $pkg ) || print "Bail out!\n";
+    { no strict 'refs';
+      diag( "Testing $pkg ${$pkg . '::VERSION'}, Perl $], $^X" );
+    }
+  }
 }
 
-diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );

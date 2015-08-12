@@ -1,4 +1,4 @@
-package Cow;
+package Mouse;
 
 use v5.10.1;
 use strict;
@@ -8,7 +8,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Mouse - The great new Mouse!
 
 =head1 VERSION
 
@@ -18,25 +18,40 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Simulates the complex behavioural patterns of the mighty Cow.
+Simulates an adorable little field mouse. D'aww.
 
-    use Cow;
+    use Mouse;
 
-    Cow->speak; # "a Cow goes moooo!"
+    Mouse->speak; # "a mouse goes squeak!"
+    # "[but you can barely hear it!]"
     ...
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
+=head2 sound
 
-The noise made by a Cow.
+The noise a mouse might make. Y'know, if you accidentally stepped on one or something.
+They're usually pretty quiet. Also, adorable.
 
 =cut
 
-sub sound { 'moooo' }
+sub sound { 'squeak' }
+
+=head2 speak
+
+Prints the noise a mouse makes to STDOUT.
+A mouse will speak a little more quietly than your typical animal.
+
+=cut
+
+sub speak {
+  my $class = shift;
+
+  $class->SUPER::speak( @_ );
+  print "[but you can barely hear it!]\n";
+}
 
 =head1 AUTHOR
 
@@ -52,7 +67,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Mouse
 
 
 You can also look for information at:
@@ -124,4 +139,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Mouse
