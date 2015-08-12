@@ -4,6 +4,7 @@ chapter*/*/coconet.dat
 *.swp
 .codio
 .settings
+.gitignore
 
 # Perl package/dist build stuff - _should_ catch everyone's
 *.tar.gz
