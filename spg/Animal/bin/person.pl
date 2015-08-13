@@ -3,8 +3,8 @@
 use strict;
 use warnings;
 
-require '../lib/Human.pm';
-require '../lib/Sheep.pm';
+use Human;
+use Sheep;
 
 Human->speak("Hello, world!");
 
