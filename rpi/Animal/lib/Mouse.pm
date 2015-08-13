@@ -1,13 +1,13 @@
-package Animal;
+package Mouse;
 
-use base qw( LivingCreature );
+use base qw( Animal );
 
 use strict;
 use warnings;
 
 =head1 NAME
 
-Animal - The great new Animal!
+Mouse - The great new Mouse!
 
 =head1 VERSION
 
@@ -24,9 +24,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use Mouse;
 
-    my $foo = Animal->new();
+    my $foo = Mouse->new();
     ...
 
 =head1 EXPORT
@@ -40,16 +40,18 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
+sub sound {
+  return 'squeal';
+}
+
 =head2 function2
 
 =cut
 
-sub sound {
-  die 'You have to define sound() in a subclass';
-}
-
-sub speaks_english {
-  return 0;
+sub speak {
+  my $class = shift;
+  $class->SUPER::speak( @_ );
+  print "[but you can barely hear it!]\n";
 }
 
 =head1 AUTHOR
@@ -58,8 +60,8 @@ dickyince, C<< <minnimince at googlemail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -69,7 +71,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Mouse
 
 
 You can also look for information at:
@@ -78,19 +80,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -141,4 +143,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Mouse

@@ -1,13 +1,11 @@
-package Animal;
-
-use base qw( LivingCreature );
+package LivingCreature;
 
 use strict;
 use warnings;
 
 =head1 NAME
 
-Animal - The great new Animal!
+LivingCreature - The great new LivingCreature!
 
 =head1 VERSION
 
@@ -24,9 +22,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use LivingCreature;
 
-    my $foo = Animal->new();
+    my $foo = LivingCreature->new();
     ...
 
 =head1 EXPORT
@@ -40,6 +38,21 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
+sub speak {
+  my $class = shift;
+  if ( @_ ) {
+    if ( $class->speaks_english() ) {
+      print "The $class says: @_ \n";
+    }
+    else {
+      die "A $class can't speak english";
+    }
+  }
+  else {
+    print "a $class goes " . $class->sound() . "!\n";
+  }
+}
+
 =head2 function2
 
 =cut
@@ -49,7 +62,7 @@ sub sound {
 }
 
 sub speaks_english {
-  return 0;
+  die 'You have to define speaks_english in a subclass';
 }
 
 =head1 AUTHOR
@@ -58,8 +71,8 @@ dickyince, C<< <minnimince at googlemail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -69,7 +82,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc LivingCreature
 
 
 You can also look for information at:
@@ -78,19 +91,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -141,4 +154,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of LivingCreature
