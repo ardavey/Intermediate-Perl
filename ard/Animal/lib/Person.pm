@@ -1,14 +1,14 @@
-package Cow;
+package Person;
 
 use 5.006;
 use strict;
 use warnings;
 
-use parent qw( Animal );
+use parent qw( LivingCreature );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Person - The great new Person!
 
 =head1 VERSION
 
@@ -25,9 +25,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use Person;
 
-    my $foo = Cow->new();
+    my $foo = Person->new();
     ...
 
 =head1 EXPORT
@@ -44,7 +44,7 @@ Define the sound made by this animal.
 =cut
 
 sub sound {
-  "moooo";
+  "hmmm";
 }
 
 =head1 AUTHOR
@@ -64,7 +64,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Person
 
 
 You can also look for information at:
@@ -136,4 +136,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Person
