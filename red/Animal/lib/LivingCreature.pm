@@ -1,14 +1,12 @@
-package Cow;
+package LivingCreature;
 
-use v5.10.1;
+use 5.10.1;
 use strict;
 use warnings;
 
-use parent qw( Animal );
-
 =head1 NAME
 
-Cow - The great new Cow!
+LivingCreature - The great new LivingCreature!
 
 =head1 VERSION
 
@@ -21,22 +19,46 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Simulates the complex behavioural patterns of the mighty Cow.
+Simulation for living creatures.
 
-    use Cow;
+    package Walrus;
+    use parent qw( LivingCreature );
 
-    Cow->speak; # "a Cow goes moooo!"
+    sub sound { 'Groaaargh' }
+    # ...
+
+    Walrus->speak; # "a Walrus goes Groaaargh!"
     ...
 
 =head1 SUBROUTINES/METHODS
 
 =head2 speak
 
-The noise made by a Cow.
+All living creatures speak, right?
+This does so, straight to STDOUT.
 
 =cut
 
-sub sound { 'moooo' }
+sub speak {
+  my ( $class, @utterance ) = @_;
+  print "a $class goes ";
+  
+  print do {
+    if ( @utterance ) {
+      @utterance, "\n";
+    } else {
+      $class->sound, "!\n";
+    }
+  };
+}
+
+=head2 sound
+
+Returns a string representation of the sound the LivingCreature would make.
+
+=cut
+
+sub sound { die shift . '::sound has not been implemented' }
 
 =head1 AUTHOR
 
@@ -52,7 +74,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc LivingCreature
 
 
 You can also look for information at:
@@ -124,4 +146,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of LivingCreature

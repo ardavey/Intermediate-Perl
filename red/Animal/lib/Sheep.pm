@@ -1,4 +1,4 @@
-package Cow;
+package Sheep;
 
 use v5.10.1;
 use strict;
@@ -8,7 +8,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Sheep - The great new Sheep!
 
 =head1 VERSION
 
@@ -18,25 +18,24 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Simulates the complex behavioural patterns of the mighty Cow.
+Simulation of those weird fluffy cloud-beasts.
 
-    use Cow;
+    use Sheep;
 
-    Cow->speak; # "a Cow goes moooo!"
+    Sheep->speak; # "a Sheep goes baaa!"
     ...
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
+=head2 sound
 
-The noise made by a Cow.
+The sound a sheep might make.
 
 =cut
 
-sub sound { 'moooo' }
+sub sound { 'baaaah' }
 
 =head1 AUTHOR
 
@@ -52,7 +51,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Sheep
 
 
 You can also look for information at:
@@ -124,4 +123,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Sheep

@@ -1,14 +1,14 @@
-package Cow;
+package Person;
 
-use v5.10.1;
+use 5.10.1;
 use strict;
 use warnings;
 
-use parent qw( Animal );
+use parent qw( LivingCreature );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Person - The great new Person!
 
 =head1 VERSION
 
@@ -18,25 +18,26 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Simulates the complex behavioural patterns of the mighty Cow.
+Simulation for those greasy land mammals with opposable thumbs.
 
-    use Cow;
+    use Person;
 
-    Cow->speak; # "a Cow goes moooo!"
+    Person->speak; # "a Person goes hummmmmm!"
+    Person->speak( 'I can totes tap at a keyboard and appear smart' );
+    # "a Person goes I can totes tap at a keyboard and appear smart!"
     ...
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
+=head2 sound
 
-The noise made by a Cow.
+A typical sound you might hear a human generate.
 
 =cut
 
-sub sound { 'moooo' }
+sub sound { 'hummmmm' }
 
 =head1 AUTHOR
 
@@ -52,7 +53,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Person
 
 
 You can also look for information at:
@@ -124,4 +125,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Person
