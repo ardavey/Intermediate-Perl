@@ -1,13 +1,12 @@
-package Cow;
+package LivingCreature;
 
 use 5.006;
 use strict;
 use warnings;
-use parent qw(Animal);
 
 =head1 NAME
 
-Cow - The great new Cow!
+LivingCreature - The great new LivingCreature!
 
 =head1 VERSION
 
@@ -24,9 +23,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use LivingCreature;
 
-    my $foo = Cow->new();
+    my $foo = LivingCreature->new();
     ...
 
 =head1 EXPORT
@@ -40,13 +39,17 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
-sub sound { 'moooo' }
+sub speak {
+  my $class = shift;
+  print "a $class goes ", $class->sound, "!\n";
+}
 
 =head2 function2
 
 =cut
 
-sub function2 {
+sub sound {
+  die 'You have to define sound() in a subclass'
 }
 
 =head1 AUTHOR
@@ -55,8 +58,8 @@ Jonathan, C<< <jp at example.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -66,7 +69,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc LivingCreature
 
 
 You can also look for information at:
@@ -75,19 +78,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/Animal>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/Animal>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/Animal/>
 
 =back
 
@@ -138,4 +141,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of LivingCreature

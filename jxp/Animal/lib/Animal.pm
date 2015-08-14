@@ -3,6 +3,7 @@ package Animal;
 use 5.006;
 use strict;
 use warnings;
+use parent qw(LivingCreature);
 
 =head1 NAME
 
@@ -39,15 +40,18 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
-sub function1 {
+sub speak {
+  my $class = shift;
+  if(@_){
+    print "Animals can't talk"
+  }else{
+    $class->SUPER::speak();
+  }
 }
 
 =head2 function2
 
 =cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
