@@ -1,4 +1,4 @@
-package Cow;
+package Sheep;
 
 use 5.006;
 use strict;
@@ -8,7 +8,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Sheep - The great new Sheep!
 
 =head1 VERSION
 
@@ -25,9 +25,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use Sheep;
 
-    my $foo = Cow->new();
+    my $foo = Sheep->new();
     ...
 
 =head1 EXPORT
@@ -44,7 +44,7 @@ Define the sound made by this animal.
 =cut
 
 sub sound {
-  "moooo";
+  "baaaah";
 }
 
 =head1 AUTHOR
@@ -64,7 +64,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Sheep
 
 
 You can also look for information at:
@@ -136,4 +136,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Sheep

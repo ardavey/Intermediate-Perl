@@ -1,14 +1,12 @@
-package Cow;
+package LivingCreature;
 
 use 5.006;
 use strict;
 use warnings;
 
-use parent qw( Animal );
-
 =head1 NAME
 
-Cow - The great new Cow!
+LivingCreature - The great new LivingCreature!
 
 =head1 VERSION
 
@@ -25,9 +23,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use LivingCreature;
 
-    my $foo = Cow->new();
+    my $foo = LivingCreature->new();
     ...
 
 =head1 EXPORT
@@ -39,12 +37,29 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head2 sound
 
-Define the sound made by this animal.
+Define the sound made by an animal - subclasses must override this.
 
 =cut
 
 sub sound {
-  "moooo";
+  die "Subclass must override sound()";
+}
+
+=head2 speak
+
+Make the animal speak
+
+=cut
+
+sub speak {
+  my ( $self, $phrase ) = @_;
+  
+  if ( $phrase ) {
+    print "A $self says $phrase!\n";
+  }
+  else {
+    print "A $self says ", $self->sound(), "!\n";
+  }
 }
 
 =head1 AUTHOR
@@ -64,7 +79,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc LivingCreature
 
 
 You can also look for information at:
@@ -136,4 +151,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of LivingCreature

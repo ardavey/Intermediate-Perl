@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use parent qw( LivingCreature );
+
 =head1 NAME
 
 Animal - The great new Animal!
@@ -35,18 +37,29 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
+
+Define the sound made by an animal - subclasses must override this.
 
 =cut
 
-sub function1 {
+sub sound {
+  die "Subclass must override sound()";
 }
 
-=head2 function2
+=head2 speak
+
+Make the animal speak.  Clearly they can't really speak - just make the right number of noises instead.
 
 =cut
 
-sub function2 {
+sub speak {
+  my ( $self, $phrase ) = @_;
+  
+  if ( $phrase ) {
+    $phrase = join( ' ', ( $self->sound ) x scalar split( ' ', $phrase ) );
+  }
+  $self->SUPER::speak( $phrase );
 }
 
 =head1 AUTHOR
