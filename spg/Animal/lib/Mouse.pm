@@ -1,4 +1,4 @@
-package Animal;
+package Mouse;
 
 use 5.006;
 use strict;
@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Animal - The great new Animal!
+Mouse - The great new Mouse!
 
 =head1 VERSION
 
@@ -17,7 +17,7 @@ Version 0.01
 our $VERSION = '0.01';
 
 use vars qw(@ISA);
-@ISA = qw(LivingCreature);
+@ISA = qw(Animal);
 
 =head1 SYNOPSIS
 
@@ -25,9 +25,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use Mouse;
 
-    my $foo = Animal->new();
+    my $foo = Mouse->new();
     ...
 
 =head1 EXPORT
@@ -45,6 +45,8 @@ sub speak {
   my ( $self ) = @_;
 
   printf "%s says \"%s\"!\n", $self->get_type(), $self->get_voice();
+
+  printf "...but you can barely hear it!\n";
 }
 
 =head2 get_type
@@ -52,7 +54,7 @@ sub speak {
 =cut
 
 sub get_type {
-  return "Unknown beast, shrouded in darkness,";
+  return "Mouse";
 }
 
 =head2 get_voice
@@ -60,7 +62,7 @@ sub get_type {
 =cut
 
 sub get_voice {
-  return "welcome to the jungle";
+  return "squeak";
 }
 
 =head1 AUTHOR
@@ -69,8 +71,8 @@ spg, C<< <simon.gross at datacash.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -80,7 +82,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Mouse
 
 
 You can also look for information at:
@@ -89,19 +91,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -111,7 +113,7 @@ L<http://search.cpan.org/dist/Animal/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2015 spg.
+Copyright 2015 Simon Gross.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -152,4 +154,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Mouse
