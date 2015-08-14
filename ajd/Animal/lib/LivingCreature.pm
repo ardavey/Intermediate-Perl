@@ -1,14 +1,12 @@
-package Animal;
+package LivingCreature;
 
 use 5.006;
 use strict;
 use warnings;
 
-use parent qw( LivingCreature );
-
 =head1 NAME
 
-Animal - The great new Animal!
+LivingCreature - The great new LivingCreature!
 
 =head1 VERSION
 
@@ -21,26 +19,29 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Intended to be an abstract class for other animals
+Quick summary of what the module does.
+
+Perhaps a little code snippet.
+
+    use LivingCreature;
+
+    my $foo = LivingCreature->new();
+    ...
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
-
-Will cause an animal to make noise, provided their sound()
-method has been implemented
+=head2 function1
 
 =cut
 
 sub speak {
 
   my $class = shift;
-  $class->SUPER::speak( $class->sound );
+  my $sound = shift;
+  print "a $class goes " . $sound , "!\n";
 }
 
-=head2 sound
-
-The noise made by an animal. This must be overidden.
+=head2 function2
 
 =cut
 
@@ -65,7 +66,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc LivingCreature
 
 
 You can also look for information at:
@@ -137,4 +138,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of LivingCreature

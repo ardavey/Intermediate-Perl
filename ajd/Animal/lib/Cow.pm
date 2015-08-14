@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use parent qw( Animal );
+
 =head1 NAME
 
 Cow - The great new Cow!
@@ -19,44 +21,34 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Cow;
-
-    my $foo = Cow->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+This is a cow, if all goes well, it will moo
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 speak
+
+Supplied by Animal, will make the cow moo
 
 =cut
 
-sub function1 {
-}
+=head2 sound
 
-=head2 function2
+Provided the moo
 
 =cut
 
-sub function2 {
+sub sound {
+  return 'mooo';
 }
 
 =head1 AUTHOR
 
-Alex Deas, C<< <alex.deas at datacash.com> >>
+Alex Deas, C<< <alex at toothball.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -75,19 +67,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/Animal>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/Animal>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/Animal/>
 
 =back
 
