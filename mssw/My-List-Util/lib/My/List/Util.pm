@@ -16,7 +16,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -41,7 +40,7 @@ if you don't export anything, such as for a purely object-oriented module.
 
 sub sum {
     my $total = 0;
-    foreach my $val ( @_ ){
+    foreach my $val (@_) {
         $total += $val;
     }
     return $total;
@@ -52,14 +51,14 @@ sub sum {
 =cut
 
 sub shuffle {
-     my $deck = shift;  # $deck is a reference to an array
-     return unless @$deck; # must not be empty!
-     
-     my $i = @$deck;
-     while (--$i) {
-         my $j = int rand ($i+1);
-         @$deck[$i,$j] = @$deck[$j,$i];
-     }
+    my $deck = shift;    # $deck is a reference to an array
+    return unless @$deck;    # must not be empty!
+
+    my $i = @$deck;
+    while ( --$i ) {
+        my $j = int rand( $i + 1 );
+        @$deck[ $i, $j ] = @$deck[ $j, $i ];
+    }
 }
 
 =head1 AUTHOR
@@ -151,4 +150,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of My::List::Util
+1;    # End of My::List::Util
