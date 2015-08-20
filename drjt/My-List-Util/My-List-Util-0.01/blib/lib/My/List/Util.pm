@@ -1,15 +1,12 @@
-#!/usr/bin/perl -Ilib
-package Sheep;
+package My::List::Util;
 
-use 5.006;
+use 5.010;
 use strict;
 use warnings;
 
-use parent qw(Animal);
-
 =head1 NAME
 
-Sheep - The great new Sheep!
+My::List::Util - The great new My::List::Util!
 
 =head1 VERSION
 
@@ -26,9 +23,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Sheep;
+    use My::List::Util;
 
-    my $foo = Sheep->new();
+    my $foo = My::List::Util->new();
     ...
 
 =head1 EXPORT
@@ -38,14 +35,19 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
-
-sounds like a sheep
+=head2 function1
 
 =cut
 
-sub sound { 'baaaaah' }
+sub function1 {
+}
 
+=head2 function2
+
+=cut
+
+sub function2 {
+}
 
 =head1 AUTHOR
 
@@ -53,8 +55,8 @@ David Thrussell, C<< <fake at notarealemail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -64,7 +66,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Sheep
+    perldoc My::List::Util
 
 
 You can also look for information at:
@@ -73,19 +75,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/My-List-Util>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/My-List-Util>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/My-List-Util/>
 
 =back
 
@@ -136,4 +138,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Sheep
+1; # End of My::List::Util

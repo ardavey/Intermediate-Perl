@@ -41,13 +41,15 @@ if you don't export anything, such as for a purely object-oriented module.
 =cut
 
 sub speak {
-  my $class = shift;
+  my ( $out, $class ) = ( undef, shift );
   if ( @_ ) {
-    say "@_";
+    $out = "@_";
   }
   else {
-    say "a $class goes ", $class->sound, "!";
+    $out = "A $class goes " . $class->sound . "!";
   }
+  say $out;
+  return $out;
 }
 
 =head1 AUTHOR

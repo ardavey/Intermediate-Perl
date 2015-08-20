@@ -1,101 +1,39 @@
-#!/usr/bin/perl -Ilib
-package Sheep;
+My-List-Util
 
-use 5.006;
-use strict;
-use warnings;
+INSTALLATION
 
-use parent qw(Animal);
+To install this module, run the following commands:
 
-=head1 NAME
+	perl Build.PL
+	./Build
+	./Build test
+	./Build install
 
-Sheep - The great new Sheep!
+SUPPORT AND DOCUMENTATION
 
-=head1 VERSION
+After installing, you can find documentation for this module with the
+perldoc command.
 
-Version 0.01
-
-=cut
-
-our $VERSION = '0.01';
-
-
-=head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Sheep;
-
-    my $foo = Sheep->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 SUBROUTINES/METHODS
-
-=head2 sound
-
-sounds like a sheep
-
-=cut
-
-sub sound { 'baaaaah' }
-
-
-=head1 AUTHOR
-
-David Thrussell, C<< <fake at notarealemail.com> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Sheep
-
+    perldoc My::List::Util
 
 You can also look for information at:
 
-=over 4
+    RT, CPAN's request tracker (report bugs here)
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util
 
-=item * RT: CPAN's request tracker (report bugs here)
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/My-List-Util
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+    CPAN Ratings
+        http://cpanratings.perl.org/d/My-List-Util
 
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/.>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/.>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/./>
-
-=back
+    Search CPAN
+        http://search.cpan.org/dist/My-List-Util/
 
 
-=head1 ACKNOWLEDGEMENTS
+LICENSE AND COPYRIGHT
 
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2015 David Thrussell.
+Copyright (C) 2015 David Thrussell
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -133,7 +71,3 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-=cut
-
-1; # End of Sheep
