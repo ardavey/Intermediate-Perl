@@ -16,8 +16,7 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use vars qw(@ISA);
-@ISA = qw(LivingCreature);
+use parent qw(LivingCreature);
 
 =head1 SYNOPSIS
 
