@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Sheep - The great new Sheep!
+Sheep - Sheep (Ovis aries) are quadrupedal, ruminant mammals typically kept as livestock. Like all ruminants, sheep are members of the order Artiodactyla, the even-toed ungulates. Although the name "sheep" applies to many species in the genus Ovis, in everyday usage it almost always refers to Ovis aries. Numbering a little over one billion, domestic sheep are also the most numerous species of sheep. An adult female sheep is referred to as a ewe (/juː/), an intact male as a ram or occasionally a tup, a castrated male as a wether, and a younger sheep as a lamb.
 
 =head1 VERSION
 
@@ -20,34 +20,19 @@ use parent qw(Animal);
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Sheep;
-
-    my $foo = Sheep->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+This module will grasp at the very fabric of sheep existance.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
+
+The sheep goes baaaaaaa
 
 =cut
 
-sub function1 {
-}
 
-=head2 function2
-
-=cut
-
-sub function2 {
+sub sound {
+    return "baaaaaaa";
 }
 
 =head1 AUTHOR
@@ -139,8 +124,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-sub sound {
-    return "baaaaaaa";
-}
 
 1;    # End of Sheep

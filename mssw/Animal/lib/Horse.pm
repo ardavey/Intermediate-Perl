@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Horse - The great new Horse!
+Horse - The horse (Equus ferus caballus) is one of two extant subspecies of Equus ferus. It is an odd-toed ungulate mammal belonging to the taxonomic family Equidae. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature into the large, single-toed animal of today. Humans began to domesticate horses around 4000 BC, and their domestication is believed to have been widespread by 3000 BC. Horses in the subspecies caballus are domesticated, although some domesticated populations live in the wild as feral horses. These feral populations are not true wild horses, as this term is used to describe horses that have never been domesticated, such as the endangered Przewalski's horse, a separate subspecies, and the only remaining true wild horse. There is an extensive, specialized vocabulary used to describe equine-related concepts, covering everything from anatomy to life stages, size, colors, markings, breeds, locomotion, and behavior.
 
 =head1 VERSION
 
@@ -20,34 +20,19 @@ use parent qw(Animal);
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Horse;
-
-    my $foo = Horse->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+This module will grasp at the very fabric of horse existance.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
+
+The horse goes neighhhh
 
 =cut
 
-sub function1 {
-}
 
-=head2 function2
-
-=cut
-
-sub function2 {
+sub sound {
+    return 'neighhhh';
 }
 
 =head1 AUTHOR
@@ -139,8 +124,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-sub sound {
-    return 'neighhhh';
-}
 
 1;    # End of Horse
