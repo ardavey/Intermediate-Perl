@@ -7,8 +7,6 @@ BEGIN {
   use_ok( 'Sheep' ) || BAIL_OUT();
 }
 
-diag( "Testing Sheep $Sheep::VERSION, Perl $], $^X" );
-
 ok( defined &Sheep::sound, 'Sheep::sound is defined' );
 
 {
