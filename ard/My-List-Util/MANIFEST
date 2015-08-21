@@ -1,0 +1,9 @@
+Build.PL
+Changes
+lib/My/List/Util.pm
+MANIFEST			This list of files
+README
+t/t
+t/xt
+t/shuffle.t
+t/sum.t
