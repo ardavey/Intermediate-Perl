@@ -10,10 +10,15 @@ lib/Sheep.pm
 MANIFEST			This list of files
 README
 scripts/ch13ex2.pl
+scripts/person.pl
 t/00-load.t
+t/Animal.t
+t/Cow.t
+t/Horse.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/Sheep.t
 t/t
 t/xt
 xt/boilerplate.t

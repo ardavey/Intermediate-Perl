@@ -38,11 +38,19 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
+
+sounds like a mouse
 
 =cut
 
 sub sound { 'squeak' }
+
+=head2 speak
+
+make said sound
+
+=cut
 
 sub speak {
   my $class = shift;
