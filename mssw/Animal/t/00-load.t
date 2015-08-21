@@ -4,10 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 1;
+plan tests => 7;
 
 BEGIN {
-    use_ok( 'Animal' ) || print "Bail out!\n";
+    foreach my $class ( qw( Animal Cow Horse LivingCreature Mouse Person Sheep )){
+        use_ok( $class ) || print "Bail out!\n";
+    }
 }
 
-diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );
+diag("Testing Animal $Animal::VERSION, Perl $], $^X");

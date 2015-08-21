@@ -1,4 +1,4 @@
-package Horse;
+package My::List::Util;
 
 use 5.006;
 use strict;
@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Horse - The horse (Equus ferus caballus) is one of two extant subspecies of Equus ferus. It is an odd-toed ungulate mammal belonging to the taxonomic family Equidae. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature into the large, single-toed animal of today. Humans began to domesticate horses around 4000 BC, and their domestication is believed to have been widespread by 3000 BC. Horses in the subspecies caballus are domesticated, although some domesticated populations live in the wild as feral horses. These feral populations are not true wild horses, as this term is used to describe horses that have never been domesticated, such as the endangered Przewalski's horse, a separate subspecies, and the only remaining true wild horse. There is an extensive, specialized vocabulary used to describe equine-related concepts, covering everything from anatomy to life stages, size, colors, markings, breeds, locomotion, and behavior.
+My::List::Util - The great new My::List::Util!
 
 =head1 VERSION
 
@@ -16,23 +16,49 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use parent qw(Animal);
-
 =head1 SYNOPSIS
 
-This module will grasp at the very fabric of horse existance.
+Quick summary of what the module does.
+
+Perhaps a little code snippet.
+
+    use My::List::Util;
+
+    my $foo = My::List::Util->new();
+    ...
+
+=head1 EXPORT
+
+A list of functions that can be exported.  You can delete this section
+if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
-
-The horse goes neighhhh
+=head2 function1
 
 =cut
 
+sub sum {
+    my $total = 0;
+    foreach my $val (@_) {
+        $total += $val;
+    }
+    return $total;
+}
 
-sub sound {
-    return 'neighhhh';
+=head2 function2
+
+=cut
+
+sub shuffle {
+    my $deck = shift;    # $deck is a reference to an array
+    return unless @$deck;    # must not be empty!
+
+    my $i = @$deck;
+    while ( --$i ) {
+        my $j = int rand( $i + 1 );
+        @$deck[ $i, $j ] = @$deck[ $j, $i ];
+    }
 }
 
 =head1 AUTHOR
@@ -41,8 +67,8 @@ Michael Wambeek, C<< <mikewambeek at hotmail.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -52,7 +78,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Horse
+    perldoc My::List::Util
 
 
 You can also look for information at:
@@ -61,19 +87,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/My-List-Util>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/My-List-Util>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/My-List-Util/>
 
 =back
 
@@ -124,5 +150,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-
-1;    # End of Horse
+1;    # End of My::List::Util

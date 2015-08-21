@@ -1,89 +1,51 @@
-package Sheep;
+My-List-Util
 
-use 5.006;
-use strict;
-use warnings;
+The README is used to introduce the module and provide instructions on
+how to install the module, any machine dependencies it may have (for
+example C compilers and installed libraries) and any other information
+that should be provided before the module is installed.
 
-=head1 NAME
-
-Sheep - Sheep (Ovis aries) are quadrupedal, ruminant mammals typically kept as livestock. Like all ruminants, sheep are members of the order Artiodactyla, the even-toed ungulates. Although the name "sheep" applies to many species in the genus Ovis, in everyday usage it almost always refers to Ovis aries. Numbering a little over one billion, domestic sheep are also the most numerous species of sheep. An adult female sheep is referred to as a ewe (/juː/), an intact male as a ram or occasionally a tup, a castrated male as a wether, and a younger sheep as a lamb.
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
-our $VERSION = '0.01';
-
-use parent qw(Animal);
-
-=head1 SYNOPSIS
-
-This module will grasp at the very fabric of sheep existance.
-
-=head1 SUBROUTINES/METHODS
-
-=head2 sound
-
-The sheep goes baaaaaaa
-
-=cut
+A README file is required for CPAN modules since CPAN extracts the README
+file from a module distribution so that people browsing the archive
+can use it to get an idea of the module's uses. It is usually a good idea
+to provide version information here so that people can decide whether
+fixes for the module are worth downloading.
 
 
-sub sound {
-    return "baaaaaaa";
-}
+INSTALLATION
 
-=head1 AUTHOR
+To install this module, run the following commands:
 
-Michael Wambeek, C<< <mikewambeek at hotmail.co.uk> >>
+	perl Build.PL
+	./Build
+	./Build test
+	./Build install
 
-=head1 BUGS
+SUPPORT AND DOCUMENTATION
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+After installing, you can find documentation for this module with the
+perldoc command.
 
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Sheep
-
+    perldoc My::List::Util
 
 You can also look for information at:
 
-=over 4
+    RT, CPAN's request tracker (report bugs here)
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util
 
-=item * RT: CPAN's request tracker (report bugs here)
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/My-List-Util
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+    CPAN Ratings
+        http://cpanratings.perl.org/d/My-List-Util
 
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/.>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/.>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/./>
-
-=back
+    Search CPAN
+        http://search.cpan.org/dist/My-List-Util/
 
 
-=head1 ACKNOWLEDGEMENTS
+LICENSE AND COPYRIGHT
 
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2015 Michael Wambeek.
+Copyright (C) 2015 Michael Wambeek
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -121,8 +83,3 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-=cut
-
-
-1;    # End of Sheep

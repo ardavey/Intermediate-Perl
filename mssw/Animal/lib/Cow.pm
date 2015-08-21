@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Cow - The great new Cow!
+Cow - Cattle—colloquially cows—are the most common type of large domesticated ungulates. They are a prominent modern member of the subfamily Bovinae, are the most widespread species of the genus Bos, and are most commonly classified collectively as Bos taurus. Cattle are raised as livestock for meat (beef and veal), as dairy animals for milk and other dairy products, and as draft animals (oxen or bullocks that pull carts, plows and other implements). Other products include leather and dung for manure or fuel. In some regions, such as parts of India, cattle have significant religious meaning. From as few as 80 progenitors domesticated in southeast Turkey about 10,500 years ago, according to an estimate from 2003, there are 1.3 billion cattle in the world. In 2009, cattle became one of the first livestock animals to have a fully mapped genome. Some consider cattle the oldest form of wealth, and cattle raiding consequently one of the earliest forms of theft.
 
 =head1 VERSION
 
@@ -20,35 +20,20 @@ use parent qw(Animal);
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Cow;
-
-    my $foo = Cow->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+This module will grasp at the very fabric of cow existance.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
+
+The cow goes moooooo
 
 =cut
 
-sub function1 {
+sub sound {
+    return 'moooooo';
 }
 
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
@@ -138,9 +123,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 =cut
-
-sub sound {
-    return 'moooooo';
-}
 
 1;    # End of Cow

@@ -49,7 +49,7 @@ TODO: {
 
     not_in_file_ok( Changes => "placeholder date/time" => qr(Date/time) );
 
-    module_boilerplate_ok('lib/Animal.pm');
+    module_boilerplate_ok('lib/My/List/Util.pm');
 
 }
 
