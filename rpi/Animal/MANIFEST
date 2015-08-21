@@ -2,7 +2,6 @@ Build.PL
 Changes
 lib/Animal.pm
 lib/Cow.pm
-lib/Create_Barnyard.pl
 lib/Horse.pm
 lib/LivingCreature.pm
 lib/Mouse.pm
