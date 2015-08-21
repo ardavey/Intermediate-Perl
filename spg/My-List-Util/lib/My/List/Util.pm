@@ -1,12 +1,14 @@
-package Horse;
+package My::List::Util;
 
 use 5.006;
 use strict;
 use warnings;
 
+use Scalar::Util qw(looks_like_number);
+
 =head1 NAME
 
-Horse - The great new Horse!
+My::List::Util - The great new My::List::Util!
 
 =head1 VERSION
 
@@ -16,18 +18,10 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use parent qw(Animal);
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Horse;
-
-    my $foo = Horse->new();
-    ...
+Some random utilities
 
 =head1 EXPORT
 
@@ -36,30 +30,53 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_type
+=head2 sum
+
+Sum of the values of a list
 
 =cut
 
-sub get_type {
-  return "Horse";
+sub sum {
+  my ( $self, @input ) = @_;
+
+  my $sum = 0;
+  foreach my $item ( @input ) {
+    # Skip non-numerics to avoid warnings
+    if ( looks_like_number($item) ) {
+      $sum += $item;
+    }
+  }
+
+  return $sum;
 }
 
-=head2 get_voice
+=head2 shuffle
+
+Randomise the order of a list using fisher-yates
 
 =cut
 
-sub get_voice {
-  return "neigh";
+sub shuffle {
+  my ( $self, @deck ) = @_;
+  return unless @deck; # must not be empty!
+        
+  my $i = @deck;
+  while (--$i) {
+    my $j = int rand ($i+1);
+    @deck[$i,$j] = @deck[$j,$i];
+  }
+
+  return \@deck;
 }
 
 =head1 AUTHOR
 
-spg, C<< <simon.gross at datacash.com> >>
+Simon Gross, C<< <simon.gross at datacash.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -69,7 +86,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Horse
+    perldoc My::List::Util
 
 
 You can also look for information at:
@@ -78,19 +95,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/My-List-Util>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/My-List-Util>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/My-List-Util/>
 
 =back
 
@@ -141,4 +158,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Horse
+1; # End of My::List::Util

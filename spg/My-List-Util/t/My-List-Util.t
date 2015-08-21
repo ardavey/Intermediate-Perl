@@ -1,0 +1,29 @@
+use strict;
+use warnings;
+
+use Test::More tests => 8;
+
+BEGIN {
+  require_ok( 'My::List::Util' ) || print "Bail out!\n";
+}
+
+diag( "Testing My::List::Util $My::List::Util::VERSION, Perl $], $^X" );
+
+ok( defined &My::List::Util::sum, 'My::List::Util::sum is defined' );
+
+my @test_input_numbers = ( 1, 3, 6, 9, 23 ); 
+is( My::List::Util->sum( @test_input_numbers ), 42, "The sum method behaves as expected for a list of numbers" );
+
+my @test_input_words = qw( ab cde fgh ijk wxy ); 
+is( My::List::Util->sum( @test_input_words ), 0, "The sum method behaves as expected for a list of words" );
+
+my @test_input_mix = qw( ab 3 fgh 9 wxy ); 
+is( My::List::Util->sum( @test_input_mix ), 12, "The sum method behaves as expected for a list of words and numbers" );
+
+ok( defined &My::List::Util::shuffle, 'My::List::Util::shuffle is defined' );
+
+my @test_input_shuffle = qw( ab 3 fgh 9 wxy );
+my $test_output_shuffle = My::List::Util->shuffle( @test_input_shuffle );
+is( scalar @$test_output_shuffle, scalar @test_input_shuffle, "List is same size" );
+
+is( My::List::Util->shuffle(), undef, "Empty list returns undef" )
