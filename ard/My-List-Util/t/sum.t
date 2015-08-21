@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 BEGIN {
   use_ok( 'My::List::Util' ) || BAIL_OUT();
@@ -14,6 +14,9 @@ is( My::List::Util::sum( 1, 2, 3 ), 6, '1 + 2 + 3 = 6' );
 
 # Valid decimals
 is( My::List::Util::sum( 1.1, 2.34, 3.56, -4.32 ), 2.68, 'Decimals can be summed too' );
+
+# Huge numbers
+is( My::List::Util::sum( qw( 1234567890123456789012345678901234567890 1234567890123456789012345678901234567890 1234567890123456789012345678901234567890 ) ), 3703703670370370367037037036703703703670, 'Huuuuuuuuuuge' );
 
 # Strings
 is( My::List::Util::sum( qw( 1 2 3 ) ), 6, '"1" + "2" + "3" = 6' );
