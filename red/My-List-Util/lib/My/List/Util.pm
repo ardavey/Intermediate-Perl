@@ -1,12 +1,18 @@
-package LivingCreature;
+package My::List::Util;
 
-use 5.10.1;
+use 5.006;
 use strict;
 use warnings;
 
+use vars qw( $a $b );
+require Exporter;
+our @ISA = qw( Exporter );
+our @EXPORT_OK = qw( sum reduce shuffle );
+
+
 =head1 NAME
 
-LivingCreature - The great new LivingCreature!
+My::List::Util - Utility for lists; and it's mine.
 
 =head1 VERSION
 
@@ -19,45 +25,72 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Simulation for living creatures.
+Applies transformations to lists.
 
-    package Walrus;
-    use parent qw( LivingCreature );
+    use My::List::Util qw( sum );
 
-    sub sound { 'Groaaargh' }
-    # ...
-
-    Walrus->speak; # "a Walrus goes Groaaargh!"
+    print sum( 4, 99, 21, 3 ); # 127
     ...
 
-=head1 SUBROUTINES/METHODS
+=head1 FUNCTIONS
 
-=head2 speak
+=head2 reduce
 
-All living creatures speak, right?
-This does so, straight to STDOUT.
+Reduces the supplied list through repeated application of the supplied
+function. Yes, this is essentially the same as the List::Util::reduce
+implementation - i'd come close to this solution, then looked up the
+rest for assigning the local $a and $b vars.
 
 =cut
 
-sub speak {
-  my ( $class, @utterance ) = @_;
+sub reduce (&@) {
+  my $reducer = \&{shift @_};
 
-  print "a $class goes ", do {
-    if ( @utterance ) {
-      @utterance, "\n";
-    } else {
-      $class->sound, "!\n";
+  return do {
+    no strict 'refs';
+
+    my ( $a, $b );
+    my $caller = caller;
+    local *{$caller . '::a'} = \$a;
+    local *{$caller . '::b'} = \$b;
+
+    $a = shift;
+    foreach my $next ( @_ ) {
+      $b = $next;
+      $a = $reducer->();
     }
+
+    $a
   };
 }
 
-=head2 sound
+=head2 sum
 
-Returns a string representation of the sound the LivingCreature would make.
+Sums the supplied list, disregarding non-numerics.
 
 =cut
 
-sub sound { die shift . '::sound has not been implemented' }
+sub sum {
+  reduce { $a + $b } 0,
+    grep /^-?\d*(?:\.\d+)?(?:e\+\d+)?$/, @_
+}
+
+=head2 shuffle
+
+Classic Fisher-Yates shuffle.
+
+=cut
+
+sub shuffle {
+  my $i = my @a = @_;
+
+  while ( $i ) {
+    my $n = int rand $i--;
+    @a[$i, $n] = @a[$n, $i];
+  }
+
+  return @a;
+}
 
 =head1 AUTHOR
 
@@ -65,15 +98,18 @@ Robert Durie, C<< <robbiedurie at hotmail.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
+
+
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc LivingCreature
+    perldoc My::List::Util
 
 
 You can also look for information at:
@@ -82,19 +118,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/My-List-Util>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/My-List-Util>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/My-List-Util/>
 
 =back
 
@@ -145,4 +181,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of LivingCreature
+1; # End of My::List::Util
