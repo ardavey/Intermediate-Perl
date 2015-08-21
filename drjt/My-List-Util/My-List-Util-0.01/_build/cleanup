@@ -1,5 +1,0 @@
-do{ my $x = {
-       'blib' => 1,
-       'My-List-Util-*' => 1
-     };
-$x; }
