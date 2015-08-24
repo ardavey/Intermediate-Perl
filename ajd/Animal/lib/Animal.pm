@@ -33,7 +33,7 @@ Creates a new animal. Can only be called by sub-classes of Animal.
 
 sub new {
 
-  my ( $class, $name ) = @_;
+  my ( $class, $name, $colour ) = @_;
 
   if ( $class eq 'Animal' ) {
     die ( "Cannot create an instance of 'Animal', new method can only be called on sub-classes\n" ) ;
@@ -41,7 +41,7 @@ sub new {
 
   my $data = {
     name => $name // "a nameless $class",
-    colour => $class->default_colour();
+    colour => $colour // $class->default_colour();
   };
 
   return bless( $data, $class );
