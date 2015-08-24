@@ -25,6 +25,29 @@ Intended to be an abstract class for other animals
 
 =head1 SUBROUTINES/METHODS
 
+=head2 new
+
+Creates a new animal. Can only be called by sub-classes of Animal.
+
+=cut
+
+sub new {
+
+  my ( $class, $name ) = @_;
+
+  if ( $class eq 'Animal' ) {
+    die ( "Cannot create an instance of 'Animal', new method can only be called on sub-classes\n" ) ;
+  }
+
+  my $data = {
+    name => $name // "a nameless $class",
+    colour => "a colourless $class",
+  };
+
+  return bless( $data, $class );
+
+}
+
 =head2 speak
 
 Will cause an animal to make noise, provided their sound()
@@ -46,6 +69,70 @@ The noise made by an animal. This must be overidden.
 
 sub sound {
   die 'You must define sound() in a subclass';
+}
+
+=head2 default_colour
+
+The default colour of an animal. This must be overidden.
+
+=cut
+
+sub default_colour {
+  die 'You must define default_colour() in a subclass';
+}
+
+=head2 name
+
+Call with a name to set the name. Call with no params to get the name.
+
+=cut
+
+sub name {
+
+  my $self = shift;
+
+  if ( ref( $self ) ) {
+    if ( scalar( @_ ) ) {
+      $self->{name} = shift;
+    } else {
+      return $self->{name};
+    }
+  } else {
+    if ( scalar( @_ ) ) {
+      die "Attempted to set the name of all ${self}s everywhere\n";
+    }
+    else {
+      return "an nameless $self";
+    }
+  }
+
+}
+
+=head2 colour
+
+Call with a colour to set the colour Call with no params to get the colour
+
+=cut
+
+sub colour {
+
+  my $self = shift;
+
+  if ( ref( $self ) ) {
+    if ( scalar( @_ ) ) {
+      $self->{colour} = shift;
+    } else {
+      return $self->{colour};
+    }
+  } else {
+    if ( scalar( @_ ) ) {
+      die "Attempted to set the colour of all ${self}s everywhere\n";
+    }
+    else {
+      return $self->default_colour();
+    }
+  }
+
 }
 
 =head1 AUTHOR
