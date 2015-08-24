@@ -36,6 +36,59 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 new
+
+=cut
+
+sub new {
+  my ( $class, $name, $colour ) = @_;
+
+  $colour = default_colour() unless defined $colour;
+
+  return bless { name => $name, colour => $colour }, $class;
+
+}
+
+=head2 set_name
+
+=cut
+
+sub set_name {
+  @_[0]->{name} = @_[1];
+  return @_[0];
+}
+
+=head2 name
+
+=cut
+
+sub name {
+  return @_[0]->{name};
+}
+
+=head2 set_colour
+
+=cut
+
+sub set_colour {
+  @_[0]->{colour} = @_[1];
+  return @_[0];
+}
+
+=head2 colour
+
+=cut
+
+sub colour {
+  return @_[0]->{colour};
+}
+
+=head2 default_colour
+
+=cut
+
+sub default_color { 'brown' };
+
 =head2 speak
 
 =cut
