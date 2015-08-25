@@ -54,8 +54,8 @@ sub new {
 =cut
 
 sub set_name {
-  @_[0]->{name} = @_[1];
-  return @_[0];
+  $_[0]->{name} = $_[1];
+  return $_[0];
 }
 
 =head2 name
@@ -63,7 +63,7 @@ sub set_name {
 =cut
 
 sub name {
-  return @_[0]->{name};
+  return ref $_[0] ? $_[0]->{name} : "An unamed $_[0]";
 }
 
 =head2 set_colour
@@ -71,8 +71,8 @@ sub name {
 =cut
 
 sub set_colour {
-  @_[0]->{colour} = @_[1];
-  return @_[0];
+  $_[0]->{colour} = $_[1];
+  return $_[0];
 }
 
 =head2 colour
@@ -80,14 +80,14 @@ sub set_colour {
 =cut
 
 sub colour {
-  return @_[0]->{colour};
+  return ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour();
 }
 
 =head2 default_colour
 
 =cut
 
-sub default_color { 'brown' };
+sub default_colour { 'brown' };
 
 =head2 speak
 
