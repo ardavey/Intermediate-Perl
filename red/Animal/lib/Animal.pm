@@ -1,10 +1,11 @@
 package Animal;
 
-use v5.10.1;
+use v5.16;
 use strict;
 use warnings;
 
 use parent qw( LivingCreature );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -32,6 +33,82 @@ This simulates the behaviour of animals.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 new
+
+Spawn an animal with unique features
+
+=cut
+
+sub new {
+  my ( $class, %attr ) = @_;
+
+  my %animal = (
+    name => $attr{name},
+    colour => $attr{colour} // $class->default_colour
+    );
+
+  bless sub {
+    my ( $prop, $val ) = @_;
+
+    if ( !exists $animal{$prop} ) {
+      croak "$class doesn't have property $prop";
+    }
+
+    if ( defined $val ) {
+      $animal{$prop} = $val;
+      return __SUB__;
+    }
+
+    return $animal{$prop};
+  }, $class;
+}
+
+=head2 default_colour
+
+The default colour for the animal.
+
+=cut
+
+sub default_colour { 'brown' }
+
+=head2 name
+
+Getter/setter for the animal's name. Setters return self for
+operation chaining.
+
+=cut
+
+sub name {
+  my ( $target, $val ) = @_;
+
+  if ( ref $target ) {
+    $target->( name => $val )
+  }
+  else {
+    croak "Anonymous $target can't be named" if defined $val;
+    return "an unnamed $target";
+  }
+}
+
+=head2 colour
+
+Getter/setter for the animal's colour. Setters return self for
+operation chaining.
+
+=cut
+
+sub colour {
+  my ( $target, $val ) = @_;
+
+  if ( ref $target ) {
+    $target->( colour => $val )
+  }
+  else {
+    croak "Anonymous $target can't have its colour changed" if defined $val;
+    return $target->default_colour;
+  }
+}
+
 =head2 speak
 
 Prints the noise this animal makes to STDOUT.
@@ -39,9 +116,9 @@ Prints the noise this animal makes to STDOUT.
 =cut
 
 sub speak {
-  my $class = shift;
+  my $target = shift;
 
-  $class->SUPER::speak;
+  $target->SUPER::speak;
 }
 
 =head1 AUTHOR
