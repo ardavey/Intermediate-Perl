@@ -40,7 +40,7 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =cut
 
-sub default_color { 'white' };
+sub default_colour { 'white' };
 
 =head2 get_type
 
