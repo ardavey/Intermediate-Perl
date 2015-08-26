@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use Carp qw(croak);
+
 =head1 NAME
 
 Animal - The great new Animal!
@@ -54,6 +56,7 @@ sub new {
 =cut
 
 sub set_name {
+  ref $_[0] or croak "Cannot set name of generic thing";
   $_[0]->{name} = $_[1];
   return $_[0];
 }
@@ -71,6 +74,7 @@ sub name {
 =cut
 
 sub set_colour {
+  ref $_[0] or croak "Cannot set colour of generic thing";
   $_[0]->{colour} = $_[1];
   return $_[0];
 }

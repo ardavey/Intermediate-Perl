@@ -15,4 +15,6 @@ print 'Wait a moment, his name is ', $tv_horse->name(), ' and he is actually ', 
 my $tv_horse_wife = Horse->new('Mrs. Ed','polkadot');
 print $tv_horse_wife->name(), ' is ', $tv_horse_wife->colour(), "\n";
 
+Animal->set_name('animal');
+
 print Sheep->name(), ' coloured ', Sheep->colour(), ' goes ', Sheep->get_voice(), "\n";
