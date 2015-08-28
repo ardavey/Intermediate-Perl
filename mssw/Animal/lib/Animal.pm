@@ -36,18 +36,15 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 speak
 
+@Override
+calls LivingCreature::speak with no arguments;
 =cut
 
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
+sub speak {
+    my $class = shift;
+    $class->SUPER::speak();
 }
 
 =head1 AUTHOR
@@ -138,10 +135,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 =cut
-
-sub speak {
-    my $class = shift;
-    $class->SUPER::speak();
-}
 
 1;    # End of Animal
