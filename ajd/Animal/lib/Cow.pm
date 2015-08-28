@@ -41,6 +41,16 @@ sub sound {
   return 'mooo';
 }
 
+=head2 default_colour
+
+Default colour
+
+=cut
+
+sub default_colour {
+  return 'brown';
+}
+
 =head1 AUTHOR
 
 Alex Deas, C<< <alex at toothball.co.uk> >>

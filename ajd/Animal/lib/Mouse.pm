@@ -47,6 +47,16 @@ sub sound {
   return 'squeak';
 }
 
+=head2 default_colour
+
+Default colour
+
+=cut
+
+sub default_colour {
+  return 'white';
+}
+
 =head1 AUTHOR
 
 Alex Deas, C<< <alex at toothball.co.uk> >>
