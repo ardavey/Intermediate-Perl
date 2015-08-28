@@ -10,6 +10,7 @@ lib/Sheep.pm
 MANIFEST			This list of files
 README
 scripts/ch13ex2.pl
+scripts/horse.pl
 scripts/person.pl
 t/00-load.t
 t/Animal.t

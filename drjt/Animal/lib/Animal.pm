@@ -38,6 +38,77 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 new
+
+Constructor, takes a name as a parameter
+
+=cut
+
+sub new {
+  my $class = shift;
+  my $name = shift;
+  my $self = { name => $name, colour => $class->default_colour() };
+  bless $self, $class;
+  return $self;
+}
+
+=head2 default_colour
+
+Default attribute for the object
+
+=cut
+
+sub default_colour { 'beige' }
+
+=head2 set_name
+
+A setter
+
+=cut
+
+sub set_name {
+  my $self = shift;
+  my $name = shift;
+  if ( ! ref $self ) {
+    die "Class has not been instantiated, Call a constructor first!\n";
+  }
+  $self->{name} = $name;
+  return $self;
+}
+
+=head2 set_colour
+
+A setter
+
+=cut
+
+sub set_colour {
+  my $self = shift;
+  my $colour = shift;
+  if ( ! ref $self ) {
+    die "Class $self has not been instantiated, Call a constructor first!\n";
+  }
+  $self->{colour} = $colour;
+  return $self;
+}
+
+=head2 get_name 
+
+=cut
+
+sub get_name {
+  my $self = shift;
+  ref $self ? $self->{name} : "Nameless $self";
+}
+
+=head2 get_colour
+
+=cut
+
+sub get_colour {
+  ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour;
+}
+
 =head2 speak
 
 =cut

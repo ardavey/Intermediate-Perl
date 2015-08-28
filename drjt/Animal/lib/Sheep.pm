@@ -46,6 +46,11 @@ sounds like a sheep
 
 sub sound { 'baaaaah' }
 
+=head2 default_colour
+
+=cut
+
+sub default_colour { 'black' }
 
 =head1 AUTHOR
 
