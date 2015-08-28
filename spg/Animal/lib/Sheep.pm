@@ -36,6 +36,12 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 default_colour
+
+=cut
+
+sub default_colour { 'white' };
+
 =head2 get_type
 
 =cut

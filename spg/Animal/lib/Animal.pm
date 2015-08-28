@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use Carp qw(croak);
+
 =head1 NAME
 
 Animal - The great new Animal!
@@ -35,6 +37,61 @@ A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 new
+
+=cut
+
+sub new {
+  my ( $class, $name, $colour ) = @_;
+
+  $colour = default_colour() unless defined $colour;
+
+  return bless { name => $name, colour => $colour }, $class;
+
+}
+
+=head2 set_name
+
+=cut
+
+sub set_name {
+  ref $_[0] or croak "Cannot set name of generic thing";
+  $_[0]->{name} = $_[1];
+  return $_[0];
+}
+
+=head2 name
+
+=cut
+
+sub name {
+  return ref $_[0] ? $_[0]->{name} : "An unamed $_[0]";
+}
+
+=head2 set_colour
+
+=cut
+
+sub set_colour {
+  ref $_[0] or croak "Cannot set colour of generic thing";
+  $_[0]->{colour} = $_[1];
+  return $_[0];
+}
+
+=head2 colour
+
+=cut
+
+sub colour {
+  return ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour();
+}
+
+=head2 default_colour
+
+=cut
+
+sub default_colour { 'brown' };
 
 =head2 speak
 
