@@ -29,6 +29,14 @@ Simulation of those weird fluffy cloud-beasts.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 default_colour
+
+The default colour a sheep will typically be.
+
+=cut
+
+sub default_colour { 'white' }
+
 =head2 sound
 
 The sound a sheep might make.
