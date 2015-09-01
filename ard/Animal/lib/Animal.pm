@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use Carp;
+
 use parent qw( LivingCreature );
 
 =head1 NAME
@@ -37,6 +39,51 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 named
+
+Constructor for a new animal, named as per the 2nd argument.
+
+=cut
+
+sub named {
+  my ( $class, $name ) = @_;
+  
+  croak "No class name provided" if ref $class;
+  
+  my $self = {
+    name => $name,
+    colour => $class->default_colour(),
+  };
+  
+  return bless $self, $class;
+}
+
+sub name {
+  my $thing = shift;
+  return ref $thing ? $thing->{name} : "a $thing with no name";
+}
+
+sub colour {
+  my $thing = shift;
+  return ref $thing ? $thing->{colour} : $thing->default_colour();
+}
+
+sub set_name {
+  my ( $self, $name ) = @_;
+  croak "No instance provided" unless ref $self;
+  $self->{name} = $name;
+}
+
+sub set_colour {
+  my ( $self, $colour ) = @_;
+  croak "No instance provided" unless ref $self;
+  $self->{colour} = $colour;
+}
+
+sub default_colour {
+  return "purple";
+}
+
 =head2 sound
 
 Define the sound made by an animal - subclasses must override this.
@@ -44,7 +91,7 @@ Define the sound made by an animal - subclasses must override this.
 =cut
 
 sub sound {
-  die "Subclass must override sound()";
+  croak "Subclass must override sound()";
 }
 
 =head2 speak
@@ -54,12 +101,12 @@ Make the animal speak.  Clearly they can't really speak - just make the right nu
 =cut
 
 sub speak {
-  my ( $self, $phrase ) = @_;
+  my ( $class, $phrase ) = @_;
   
   if ( $phrase ) {
-    $phrase = join( ' ', ( $self->sound ) x scalar split( ' ', $phrase ) );
+    $phrase = join( ' ', ( $class->sound ) x scalar split( ' ', $phrase ) );
   }
-  $self->SUPER::speak( $phrase );
+  $class->SUPER::speak( $phrase );
 }
 
 =head1 AUTHOR
