@@ -22,13 +22,15 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+This module allows you to make named animals in different colours, the default colour is brown.
 
-Perhaps a little code snippet.
+Here is an example of an animal:
 
     use Animal;
 
-    my $foo = Animal->new();
+    my $foo = Animal->named( 'bob' );
+
+    $foo->set_colour( 'blue' );
     ...
 
 =head1 SUBROUTINES/METHODS
@@ -57,13 +59,13 @@ sub _default_colour {
   return 'brown';
 }
 
-=head set_colour
+=head2 set_colour
 
 Method to set the colour of a named animal
 
 =cut
 
-sub {
+sub set_colour {
   my $self = shift;
 
   croak 'This is not a named animal' unless ref $self;
@@ -71,22 +73,22 @@ sub {
   my $self->{colour} = shift;
 }
 
-=head colour
+=head2 colour
 
 Get the colour of an animal
 
 =cut
 
-sub {
+sub colour {
   my $either = shift;
 
   ref $either ?
     $either->{colour}
     :
-    _default_colour;
+    _default_colour();
 }
 
-=head set_name
+=head2 set_name
 
 Set the name of a named animal
 
@@ -100,7 +102,7 @@ sub set_name {
   my $self->{name} = shift;
 }
 
-=head name
+=head2 name
 
 Get name of animal
 
