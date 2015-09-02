@@ -20,7 +20,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
 gets the date
@@ -45,24 +44,25 @@ for all your autoload-y needs
 =cut
 
 sub AUTOLOAD {
-    my %properties = ( date => 'mday',
-    month => 'fullmonth',
-    year => 'year',
+    my %properties = (
+        date  => 'mday',
+        month => 'fullmonth',
+        year  => 'year',
     );
-    
+
     our $AUTOLOAD;
 
-    my ( $method ) = ($AUTOLOAD =~ /::(\w+)$/);
-    if( grep $method eq $_, keys %properties){
-       eval qq{
+    my ($method) = ( $AUTOLOAD =~ /::(\w+)$/ );
+    if ( grep $method eq $_, keys %properties ) {
+        eval qq{
             sub $method {
                 return \$_[0]->{t}->$properties{$method};
             }
        };
-       die $@ if $@;
-       goto &$method;
+        die $@ if $@;
+        goto &$method;
     }
-    else{
+    else {
         croak "$method is unimplemented for $_[0]";
     }
 }
@@ -156,4 +156,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of MyDate
+1;    # End of MyDate
