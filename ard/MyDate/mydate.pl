@@ -6,7 +6,6 @@ use 5.010;
 
 use MyDate;
 
-use Data::Dumper;
 use Time::Piece;
 
 my $d = new MyDate;

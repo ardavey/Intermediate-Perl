@@ -1,10 +1,8 @@
 package MyDate;
 
 use strict;
-use 5.010;
 
 use Carp;
-use Time::Piece;
 
 our $AUTOLOAD;
 
