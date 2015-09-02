@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use Carp qw(croak);
+
 =head1 NAME
 
 MyDate - The great new MyDate!
@@ -35,19 +37,32 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 AUTOLOAD
+
+Build a few getters
 
 =cut
 
-sub function1 {
+sub AUTOLOAD {
+  my $methods = {
+    date => sub { (localtime)[3] },
+    month => sub { (localtime)[4] + 1 },
+    year => sub { (localtime)[5] + 1900 },
+  };
+  our $AUTOLOAD;
+  (my $method = $AUTOLOAD) =~ s/.*:://s;
+  if ( defined $methods->{$method} ) {
+    {
+      no strict 'refs';
+      *$method = $methods->{$method};
+    }
+    goto &$method;
+  }
+  else {
+    croak "$method is not a valid method";
+  }
 }
 
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
