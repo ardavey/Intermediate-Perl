@@ -12,11 +12,11 @@ IslandDate
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -35,8 +35,9 @@ my @months = qw( diz pod bod rod sip wax lin sen kin fiz nap );
 
 =head1 EXPORT
 
-  number_to_day_name()
-  number_to_month_name()
+  number_to_day_name
+  number_to_month_name
+  :all
 
 =cut
 
