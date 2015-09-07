@@ -3,10 +3,10 @@
 use strict;
 use warnings;
 
-use My::List::Util;
+use My::List::Util 'sum';
 use Data::Dumper;
 
-my $sum = My::List::Util->sum( 1..10 );
+my $sum = sum( 1..10 );
 print Dumper( $sum );
 
 

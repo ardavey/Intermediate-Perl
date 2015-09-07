@@ -13,7 +13,7 @@ diag( "Testing My::List::Util $My::List::Util::VERSION, Perl $], $^X" );
 # Shuffle all of the things!
 my @array = ( qw( a b c d e ) );
 
-my @shuffled = My::List::Util->shuffle( @array );
+my @shuffled = My::List::Util::shuffle( @array );
 
 is( scalar( @shuffled ), scalar( @array ), "Haven't lost any elements" );
 

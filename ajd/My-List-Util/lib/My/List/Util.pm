@@ -4,18 +4,19 @@ use 5.006;
 use strict;
 use warnings;
 
+use Exporter 'import';
+
 =head1 NAME
 
 My::List::Util - Some basic list utilities
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
-
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -23,8 +24,23 @@ Provides some list utilities
 
     use My::List::Util;
 
-    my $foo = My::List::Util->sum( 1..5 );
+    my $foo = My::List::Util::sum( 1..5 );
     # $foo = 15;
+
+=head1 EXPORTS
+
+  sum
+  shuffle
+  :all
+
+=cut
+
+our @EXPORT;
+our @EXPORT_OK = qw( sum shuffle );
+
+our %EXPORT_TAGS = (
+    all => [ @EXPORT, @EXPORT_OK ],
+);
 
 =head1 SUBROUTINES/METHODS
 
@@ -37,7 +53,6 @@ non-numeric values are disregarded as 0;
 
 sub sum {
 
-  my $class = shift @_;
   my $sum = 0;
 
   foreach my $element ( @_ ) {
@@ -60,7 +75,6 @@ Uses a modern Fisher-Yates algorithm
 =cut
 
 sub shuffle {
-  my $class = shift @_;
 
   my @array = @_;
 
