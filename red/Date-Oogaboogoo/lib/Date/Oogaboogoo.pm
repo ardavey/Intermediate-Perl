@@ -1,16 +1,25 @@
-package My::List::Util;
+package Date::Oogaboogoo;
 
-use 5.006;
+use v5.16;
 use strict;
 use warnings;
 use parent qw( Exporter );
 
-use vars qw( $a $b );
-our @EXPORT_OK = qw( sum reduce shuffle );
+our @EXPORT;
+our @EXPORT_OK = qw(
+  number_to_day_name
+  number_to_month_name
+  );
+our %EXPORT_TAGS = (
+  all => [ @EXPORT, @EXPORT_OK ],
+  );
+
+my @days = qw( ark dip wap sen pop sep kir );
+my @months = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
 =head1 NAME
 
-My::List::Util - Utility for lists; and it's mine.
+Date::Oogaboogoo - Conversion utilities for the Oogaboogoo calendar.
 
 =head1 VERSION
 
@@ -23,71 +32,51 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Applies transformations to lists.
+Converts western calendar date offsets to Oogaboogoo calendar dates.
 
-    use My::List::Util qw( sum );
+    use Date::Oogaboogo qw(:all);
 
-    print sum( 4, 99, 21, 3 ); # 127
-    ...
+    my $day = number_to_day_name(1); # dip
+    my $mon = number_to_month_name(3); # rod
 
-=head1 FUNCTIONS
+=head1 EXPORT
 
-=head2 reduce
+Exports:
+  C<number_to_day_name( $ndx )>
+  C<number_to_month_name( $ndx )>
 
-Reduces the supplied list through repeated application of the supplied
-function. Yes, this is essentially the same as the List::Util::reduce
-implementation - i'd come close to this solution, then looked up the
-rest for assigning the local $a and $b vars.
+=head1 SUBROUTINES
 
-=cut
+=head2 C<number_to_day_name( $ndx )>
 
-sub reduce (&@) {
-  my $reducer = \&{shift @_};
-
-  return do {
-    no strict 'refs';
-
-    my ( $a, $b );
-    my $caller = caller;
-    local *{$caller . '::a'} = \$a;
-    local *{$caller . '::b'} = \$b;
-
-    $a = shift;
-    foreach my $next ( @_ ) {
-      $b = $next;
-      $a = $reducer->();
-    }
-
-    $a
-  };
-}
-
-=head2 sum
-
-Sums the supplied list, disregarding non-numerics.
+Looks up the day of the week by index (0-6) returning the Oogaboogoo name for the day.
 
 =cut
 
-sub sum {
-  reduce { $a + $b } 0,
-    grep /^-?\d*(?:\.\d+)?(?:e\+\d+)?$/, @_
-}
+sub number_to_day_name {
+  my ( $i ) = @_;
 
-=head2 shuffle
-
-Classic Fisher-Yates shuffle.
-
-=cut
-
-sub shuffle {
-  my $i = my @a = @_;
-
-  while ( $i ) {
-    my $n = int rand $i--;
-    @a[$i, $n] = @a[$n, $i];
+  if ( $i < 0 || $i > $#days ) {
+    die sprintf 'Index [%d] out of bounds, there are only %d days in the Oogaboogoo week', $i, scalar @days;
   }
 
-  return @a;
+  return $days[$i];
+}
+
+=head2 C<number_to_month_name( $ndx )>
+
+Looks up the month by index (0-11) returning the Oogaboogoo name for the month.
+
+=cut
+
+sub number_to_month_name {
+  my ( $i ) = @_;
+
+  if ( $i < 0 || $i > $#months ) {
+    die sprintf 'Index [%d] out of bounds, there are only %d months in the Oogaboogoo calendar', $i, scalar @months;
+  }
+
+  return $months[$i];
 }
 
 =head1 AUTHOR
@@ -96,8 +85,8 @@ Robert Durie, C<< <robbiedurie at hotmail.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-date-oogaboogoo at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Date-Oogaboogoo>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -107,7 +96,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc My::List::Util
+    perldoc Date::Oogaboogoo
 
 
 You can also look for information at:
@@ -116,19 +105,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Oogaboogoo>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/My-List-Util>
+L<http://annocpan.org/dist/Date-Oogaboogoo>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/My-List-Util>
+L<http://cpanratings.perl.org/d/Date-Oogaboogoo>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/My-List-Util/>
+L<http://search.cpan.org/dist/Date-Oogaboogoo/>
 
 =back
 
@@ -179,4 +168,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of My::List::Util
+1; # End of Date::Oogaboogoo

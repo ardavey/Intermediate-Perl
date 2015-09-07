@@ -1,0 +1,7 @@
+Build.PL
+Changes
+lib/Date/Oogaboogoo.pm
+MANIFEST			This list of files
+README
+t/t
+t/xt
