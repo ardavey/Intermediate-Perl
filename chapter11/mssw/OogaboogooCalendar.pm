@@ -5,9 +5,15 @@ use warnings;
 
 use Exporter qw(import);
 
+our @EXPORT = qw(
+);
 our @EXPORT_OK = qw(
     number_to_day
     number_to_month
+);
+
+our %EXPORT_TAGS = (
+    all => [ @EXPORT, @EXPORT_OK ],
 );
 
 use Data::Dumper;

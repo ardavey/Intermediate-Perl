@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Time::Piece;
-use OogaboogooCalendar qw(number_to_day number_to_month);
+use OogaboogooCalendar qw(:all);
 
 use Data::Dumper;
 
