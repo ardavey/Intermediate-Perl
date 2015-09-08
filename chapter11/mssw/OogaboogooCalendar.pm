@@ -3,6 +3,13 @@ package OogaboogooCalendar;
 use strict;
 use warnings;
 
+use Exporter qw(import);
+
+our @EXPORT_OK = qw(
+    number_to_day
+    number_to_month
+);
+
 use Data::Dumper;
 
 use constant {
