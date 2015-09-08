@@ -3,10 +3,12 @@ package Stereotypes;
 use strict;
 require Exporter;
 
-use vars qw( @ISA @EXPORT_OK );
+use Exporter qw( import );
 
-@ISA = qw( Exporter );
-@EXPORT_OK = qw( dow_to_name moy_to_name );
+our @EXPORT_OK = qw( dow_to_name moy_to_name );
+our %EXPORT_TAGS = ( 
+  all => [ @EXPORT_OK ],
+  );
 
 my @days = qw(ark dip wap sen pop sep kir);
 my @months = qw(diz pod bod rod sip wax lin sen kun fiz nap dep);

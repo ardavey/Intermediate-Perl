@@ -5,6 +5,9 @@ use strict;
 use warnings;
 
 use Scalar::Util qw(looks_like_number);
+use Exporter qw ( import );
+
+our @EXPORT_OK = qw( sum shuffle );
 
 =head1 NAME
 
