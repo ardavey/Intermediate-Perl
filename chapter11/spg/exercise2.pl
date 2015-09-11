@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Stereotypes qw( dow_to_name moy_to_name );
+use Stereotypes qw( :all );
 
 my ( $sec, $min, $hour, $mday, $mon, $year, $wday ) = localtime;
 
