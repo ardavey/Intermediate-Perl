@@ -4,9 +4,11 @@ use 5.006;
 use strict;
 use warnings;
 
+use Exporter qw(import);
+
 =head1 NAME
 
-My::List::Util - The great new My::List::Util!
+My::List::Util - A Util for Lists!
 
 =head1 VERSION
 
@@ -18,23 +20,31 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use My::List::Util;
-
-    my $foo = My::List::Util->new();
-    ...
+sums and shuffles
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+sum, shuffle
+
+=cut
+
+our @EXPORT = qw(
+);
+
+our @EXPORT_OK = qw(
+    sum
+    shuffle
+);
+
+our %EXPORT_TAGS = (
+    all => [ @EXPORT, @EXPORT_OK],
+);
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sum
+
+Sums things
 
 =cut
 
@@ -46,7 +56,9 @@ sub sum {
     return $total;
 }
 
-=head2 function2
+=head2 shuffle
+
+Shuffles things
 
 =cut
 
