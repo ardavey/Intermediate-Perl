@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 
-use My::List::Util;
+use My::List::Util 'shuffle';
 use Data::Dumper;
 
 my @array = qw( a b c d e f g h i j );
 
-my @shuffled = My::List::Util->shuffle( @array );
+my @shuffled = shuffle( @array );
 print Dumper( \@shuffled );
 
 
