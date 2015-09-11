@@ -1,4 +1,4 @@
-package My::List::Util;
+package Oogaboogoo::Date;
 
 use 5.006;
 use strict;
@@ -7,7 +7,7 @@ use parent qw( Exporter );
 
 =head1 NAME
 
-My::List::Util - The great new My::List::Util!
+Oogaboogoo::Date - Understand your Oogaboogan friends' meeting invites!
 
 =head1 VERSION
 
@@ -18,55 +18,74 @@ Version 0.01
 our $VERSION = '0.01';
 
 our @EXPORT_OK = qw(
-  sum
-  shuffle
+  day_name
+  month_name
 );
+
+our %EXPORT_TAGS = (
+  all => [ @EXPORT_OK ],
+);
+
+my @days = qw( ark dip wap sen pop sep kir );
+my @months = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
 =head1 SYNOPSIS
 
-Provides methods for summing and shuffling lists.
+This library provides convenient conversion between the Oogaboogans' date system and
+the system that everyone else uses.
+
+    use Oogaboogoo::Date qw( day_name month_name );
+
+    ...
 
 =head1 EXPORT
 
-=over 1
+=over 1 
 
-=item sum()
+=item day_name
 
-=item shuffle()
+=item month_name
 
 =back
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sum
+=head2 day_name
 
-Returns the sum of the numerics in the provided list
+Given a day index (1-7), returns an Oogaboogan day name.
 
 =cut
 
-sub sum {
-  my $sum;
-  foreach my $num ( grep( /^-?\d*\.?\d*$/, @_ ) ) {
-    $sum += $num;
-  }
-  return $sum;
+sub day_name {
+  my ( $num ) = @_;
+  return _get_indexed_value( \@days, $num, 'day' );
 }
 
-=head2 shuffle
+=head2 month_name
 
-Returns a Fisher-Yates shuffled version of the passed in array
+Given a month index (1-12), returns an Oogaboogan month name.
 
 =cut
 
-sub shuffle {
-  my @array = @_;
-  return unless scalar @array;
-  my $i = scalar @array;
-  while ( --$i ) {
-    my $j = int rand( $i + 1 );
-    @array[$i,$j] = @array[$j,$i];
+sub month_name {
+  my ( $num ) = @_;
+  return _get_indexed_value( \@months, $num, 'month' );
+}
+
+=head2 _get_indexed_value
+
+Internal method - returns the value at the given index in the referenced array.
+
+=cut
+
+sub _get_indexed_value {
+  my ( $arr, $idx, $label ) = @_;
+  $label //= 'value';
+  my $max = scalar @$arr;
+  if ( $idx < 1 || $idx > $max ) {
+    die "$label '$idx' outside allowed range 1-$max";
   }
-  return @array;
+  return $arr->[$idx - 1];
 }
 
 =head1 AUTHOR
@@ -75,8 +94,8 @@ Andrew Davey, C<< <ardavey at gmail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-oogaboogoo-date at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Oogaboogoo-Date>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -86,7 +105,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc My::List::Util
+    perldoc Oogaboogoo::Date
 
 
 You can also look for information at:
@@ -95,19 +114,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Oogaboogoo-Date>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/My-List-Util>
+L<http://annocpan.org/dist/Oogaboogoo-Date>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/My-List-Util>
+L<http://cpanratings.perl.org/d/Oogaboogoo-Date>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/My-List-Util/>
+L<http://search.cpan.org/dist/Oogaboogoo-Date/>
 
 =back
 
@@ -158,4 +177,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of My::List::Util
+1; # End of Oogaboogoo::Date
