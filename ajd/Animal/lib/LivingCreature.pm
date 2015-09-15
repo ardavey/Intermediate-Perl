@@ -38,7 +38,12 @@ sub speak {
 
   my $class = shift;
   my $sound = shift;
-  print "a $class goes " . $sound , "!\n";
+
+  if ( ref( $class ) ) {
+    print $class->name() . " goes " . $sound , "!\n";
+  } else {
+    print "a $class goes " . $sound , "!\n";
+  }
 }
 
 =head2 function2
