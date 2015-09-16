@@ -52,6 +52,12 @@ sub get_voice {
   return "neigh";
 }
 
+sub DESTROY {
+  my $self = shift;
+  $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
+  print "[", $self->name, " has gone off to the glue factory.]\n";
+}
+
 =head1 AUTHOR
 
 spg, C<< <simon.gross at datacash.com> >>
