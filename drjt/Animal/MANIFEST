@@ -6,6 +6,7 @@ lib/Horse.pm
 lib/LivingCreature.pm
 lib/Mouse.pm
 lib/Person.pm
+lib/Racehorse.pm
 lib/Sheep.pm
 MANIFEST			This list of files
 README
