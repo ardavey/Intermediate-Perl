@@ -6,7 +6,13 @@ use warnings;
 
 =head1 NAME
 
-Sheep - Sheep (Ovis aries) are quadrupedal, ruminant mammals typically kept as livestock. Like all ruminants, sheep are members of the order Artiodactyla, the even-toed ungulates. Although the name "sheep" applies to many species in the genus Ovis, in everyday usage it almost always refers to Ovis aries. Numbering a little over one billion, domestic sheep are also the most numerous species of sheep. An adult female sheep is referred to as a ewe (/juː/), an intact male as a ram or occasionally a tup, a castrated male as a wether, and a younger sheep as a lamb.
+Sheep - Sheep (Ovis aries) are quadrupedal, ruminant mammals typically kept as livestock.
+Like all ruminants, sheep are members of the order Artiodactyla, the even-toed ungulates. 
+Although the name "sheep" applies to many species in the genus Ovis, in everyday usage it 
+almost always refers to Ovis aries. Numbering a little over one billion, domestic sheep 
+are also the most numerous species of sheep. An adult female sheep is referred to as a ewe
+(/ju:/), an intact male as a ram or occasionally a tup, a castrated male as a wether, and 
+a younger sheep as a lamb.
 
 =head1 VERSION
 

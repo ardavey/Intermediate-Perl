@@ -1,12 +1,21 @@
-package Person;
+package Horse::RaceHorse;
 
 use 5.006;
 use strict;
 use warnings;
 
+use parent qw( Horse );
+
+use File::HomeDir;
+use File::Path qw(make_path );
+use File::Slurp;
+use JSON;
+
 =head1 NAME
 
-Person - The great new Person!
+Horse::RaceHorse - a Horse that can run
+
+RaceHorse statistics are stored in ~/.Animal/Horse/
 
 =head1 VERSION
 
@@ -15,33 +24,104 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-use parent qw( LivingCreature );
+
+use constant {
+    DATA_DIR => File::HomeDir->my_home . '/.Animal/Horse/RaceHorse/',
+};  
+
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Person;
-
-    my $foo = Person->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don@apos;t export anything, such as for a purely object-oriented module.
+Speedy Horse
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
+=head2 new
+
+@Override
 
 =cut
 
+sub new {
+    my $self = shift->SUPER::new(@_);
+    my $filename = DATA_DIR . $self->name;
+    
+    my $raw_data = '{}';
+    if( -e $filename ){
+        $raw_data = read_file( $filename, bin_mode => ':utf8');
+    }
+    $self->{data} = decode_json( $raw_data);
+    
+    $self->{data}->{$_} //= 0 for qw( wins places shows losses);
+    
+    return $self;
+}
 
-sub sound {
-    return "hmmmmmm";
+=head2 won
+
+adds a win for this RaceHorse
+
+=cut
+
+sub won {
+    shift->{data}->{wins}++;
+}
+
+=head2 placed
+
+adds a placed for this RaceHorse
+
+=cut
+
+sub placed {
+    shift->{data}->{places}++;
+}
+
+=head2 showed
+
+adds a whowed for this RaceHorse
+
+=cut
+
+sub showed {
+    shift->{data}->{shows}++;
+}
+
+=head2 lost
+
+adds a loss for this RaceHorse
+
+=cut
+
+sub lost {
+    shift->{data}->{losses}++;
+}
+
+=head2 standings
+
+get the standings for this RaceHorse
+
+=cut
+
+sub standings {
+    my $self = shift;
+    return join ', ', map "$self->{data}->{$_} $_", qw( wins places shows losses);
+}
+
+=head2 DESTROY
+
+This RaceHorse has had a good run... probably...
+
+=cut
+
+sub DESTROY {
+    my $self = shift;
+    my $filename =  DATA_DIR . $self->name;
+    if( !-d DATA_DIR){
+        make_path( DATA_DIR);
+    }
+    write_file( $filename, {binmode => ':utf8'}, encode_json($self->{data}) ) ;
+    print '[', $self->name, ' has died... but their legacy will be remembered!]', "\n";
 }
 
 =head1 AUTHOR
@@ -51,17 +131,14 @@ Michael Wambeek, C<< <mikewambeek at hotmail.co.uk> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then youll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Person
+    perldoc Horse::RaceHorse
 
 
 You can also look for information at:
@@ -133,5 +210,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-
-1;    # End of Person
+1; # End of Horse::RaceHorse

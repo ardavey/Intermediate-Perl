@@ -32,22 +32,27 @@ Perhaps a little code snippet.
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+if you don@apos;t export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 speak
 
 =cut
 
-sub function1 {
+sub speak {
+    my $class = shift;
+    $class->SUPER::speak(@_);
+    print "[but you can barely hear it!]\n";
 }
 
-=head2 function2
+=head2 sound
 
 =cut
 
-sub function2 {
+
+sub sound {
+    return 'squeak';
 }
 
 =head1 AUTHOR
@@ -139,14 +144,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-sub speak {
-    my $class = shift;
-    $class->SUPER::speak(@_);
-    print "[but you can barely hear it!]\n";
-}
 
-sub sound {
-    return 'squeak';
-}
+
 
 1;    # End of Mouse
