@@ -58,24 +58,24 @@ my $file = "stats.json";
 my @stats = qw( wins places shows losses );
 
 sub new {
-  my $self = $_[0]->SUPER::new(@_);
+  my $self = shift->SUPER::new(@_);
 
-  my %stats_data;
+  my $stats_data;
 
   if ( -e $file ) {
     eval {
-      %stats_data = %{ decode_json( scalar( read_file( $file ) ) ) };
-    }
+      $stats_data = decode_json( scalar( read_file( $file ) ) );
+    };
     if ( $@ ) {
       print "Invalid JSON: $@";
-      %stats_data = map { $_ => 0 } @stats;
+      $stats_data = map { $_ => 0 } @stats;
     }
   }
   else {
-    %stats_data = map { $_ => 0 } @stats;
+    $stats_data = map { $_ => 0 } @stats;
   }
 
-  @{$self}{@stats} = @stats_data{@stats};
+  @{$self}{@stats} = @{$stats_data}{@stats};
 
   $self;
 }
@@ -90,11 +90,16 @@ sub lost { $_[0]->{losses}++; }
 
 sub standings {
   my ( $self ) = @_;
-  join ', ', map "$self->{$_} $_", qw(wins places shows losses);
+  join ', ', map "$self->{$_} $_", @stats;
 }
 
 sub DESTROY {
-  my $json = encode_json( \$_[0] );
+
+  my $stats;
+
+  @{$stats}{ keys %{$_[0]} } = @{$_[0]}{ keys %{$_[0]} };
+
+  my $json = encode_json( $stats );
   write_file( "stats.json", $json );
 
   $_[0]->SUPER::DESTROY if $_[0]->can( 'SUPER::DESTROY' );
