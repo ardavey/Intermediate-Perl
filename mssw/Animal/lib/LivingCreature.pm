@@ -32,7 +32,7 @@ Perhaps a little code snippet.
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
-if you don@apos;t export anything, such as for a purely object-oriented module.
+if you don&#39;t export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
