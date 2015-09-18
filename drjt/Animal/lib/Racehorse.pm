@@ -1,16 +1,16 @@
-#!/usr/bin/perl -Ilib
-package Animal;
+package Racehorse;
 
 use 5.010;
 use strict;
 use warnings;
-use Scalar::Util qw( weaken );
-
-use parent qw(LivingCreature);
+use parent qw( Horse Storable );
+use Data::Dumper;
+use File::Slurp qw( read_file );
+use autodie;
 
 =head1 NAME
 
-Animal - The great new Animal!
+Racehorse - The great new Racehorse!
 
 =head1 VERSION
 
@@ -27,9 +27,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use Racehorse;
 
-    my $foo = Animal->new();
+    my $foo = Racehorse->new();
     ...
 
 =head1 EXPORT
@@ -39,106 +39,35 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new
-
-Constructor, takes a name as a parameter
+=head2 function1
 
 =cut
 
-my %REGISTRY;
 sub new {
-  my $class = shift;
-  my $name = shift;
-  my $self = { name => $name, colour => $class->default_colour() };
-  my $wordyname = $name =~ s/\W//gr;
-  die "already exists!\n" if grep { $wordyname eq $_ } keys %REGISTRY;
-  bless $self, $class;
-  $REGISTRY{$self} = $self;
-  weaken($REGISTRY{$self});
+  my $self = shift->SUPER::new( @_ );
+  if ( -f ( my $wordyname = $self->{name} =~ s/\W//gr ) ) {
+    $self = Storable::retrieve( $wordyname );
+  }
+  else {
+    $self->{$_} = 0 for qw(wins places shows losses);
+  }
   return $self;
 }
+sub won { shift->{wins}++ }
+sub placed { shift->{places}++ }
+sub showed { shift->{shows}++ }
+sub lost { shift->{losses}++ }
 
-sub registered { return map { sprintf "a %s named %s\n", ref, $_->name } values %REGISTRY }
+sub standings {
+  my $self = shift;
+  join ", ", map "$self->{$_} $_", qw(wins places shows losses);
+}
+
 
 sub DESTROY {
-  say "[ ", shift->get_name(), " has suffered a terminal case of death.]";
-}
-
-=head2 default_colour
-
-Default attribute for the object
-
-=cut
-
-sub default_colour { 'beige' }
-
-=head2 set_name
-
-A setter
-
-=cut
-
-sub set_name {
   my $self = shift;
-  my $name = shift;
-  if ( ! ref $self ) {
-    die "Class has not been instantiated, Call a constructor first!\n";
-  }
-  $self->{name} = $name;
-  return $self;
-}
-
-=head2 set_colour
-
-A setter
-
-=cut
-
-sub set_colour {
-  my $self = shift;
-  my $colour = shift;
-  if ( ! ref $self ) {
-    die "Class $self has not been instantiated, Call a constructor first!\n";
-  }
-  $self->{colour} = $colour;
-  return $self;
-}
-
-=head2 get_name 
-
-=cut
-
-sub get_name {
-  my $self = shift;
-  ref $self ? $self->{name} : "Nameless $self";
-}
-
-=head2 get_colour
-
-=cut
-
-sub get_colour {
-  ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour;
-}
-
-=head2 speak
-
-=cut
-
-sub speak {
-  my $class = shift;
-  if ( @_ ) {
-    die "speak should have no params for those filthy animals";
-  }
-  $class->SUPER::speak;
-}
-
-=head2 sound
-
-=cut
-
-sub sound {
-  die "This method should be overridden";
+  my $wordyname = $self->{name} =~ s/\W//gr;
+  Storable::nstore( $self, $wordyname );
 }
 
 =head1 AUTHOR
@@ -147,8 +76,8 @@ David Thrussell, C<< <fake at notarealemail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -158,7 +87,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Racehorse
 
 
 You can also look for information at:
@@ -167,19 +96,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -230,4 +159,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Racehorse
