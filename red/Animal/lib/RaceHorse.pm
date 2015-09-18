@@ -1,15 +1,14 @@
-package Animal;
+package RaceHorse;
 
-use v5.16;
+use 5.006;
 use strict;
 use warnings;
-
-use parent qw( LivingCreature );
-use Carp qw( croak );
+use Carp;
+use parent 'Horse';
 
 =head1 NAME
 
-Animal - The great new Animal!
+RaceHorse - an accurate depiction of a race Horse.
 
 =head1 VERSION
 
@@ -18,114 +17,78 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
+dbmopen( our %HORSES, 'racehorses', 0666 )
+  or croak 'Failed to open racehorse database with read/write permissions';
 
 =head1 SYNOPSIS
 
-This simulates the behaviour of animals.
+Maintains the records of a race Horse.
 
-    package Bird;
-    use parent qw( Animal );
+    use RaceHorse;
 
-    sub sound { 'Caww' }
-    # ...
-    Bird->speak; # "a Bird goes Caww!"
-    ...
+    my $horse = RaceHorse->new( name => 'Existential Crisis Pony' );
+    $horse->won;
 
 =head1 SUBROUTINES/METHODS
 
+=cut
+
+sub valid_properties { qw( wins places shows losses ) }
+my $incr = sub {
+  my ( $target, $prop ) = @_;
+  return $target->( $prop, $target->( $prop ) + 1 );
+};
+
 =head2 new
 
-Spawn an animal with unique features. If the animal has
-unique properties, these will be obtained via the
-C<valid_properties> class method.
+Obtains the records of a named racehorse, returning
+the instance for more races.
 
 =cut
 
 sub new {
-  my ( $class, %attr ) = @_;
+  my $class = shift;
+  my $self = $class->SUPER::new( @_ );
 
-  my %animal = (
-    name => $attr{name},
-    colour => $attr{colour} // $class->default_colour
-    );
+  my @props = $class->valid_properties;
+  my $record = $HORSES{$self->name} // '0 ' x @props;
+  my @cols = split ' ', $record;
 
-  if ( my $get = $class->can( 'valid_properties' ) ) {
-    my %props = map { $_ => $attr{$_} } &$get;
-    @animal{keys %props} = values %props;
+  for ( @props ) {
+    $self->( $_, shift @cols );
   }
 
-  bless sub {
-    my ( $prop, $val ) = @_;
-
-    if ( !exists $animal{$prop} ) {
-      croak "$class doesn't have property $prop";
-    }
-
-    if ( defined $val ) {
-      $animal{$prop} = $val;
-      return __SUB__;
-    }
-
-    return $animal{$prop};
-  }, $class;
+  $self
 }
 
-=head2 default_colour
+=head2 won/placed/showed/losses
 
-The default colour for the animal.
-
-=cut
-
-sub default_colour { 'brown' }
-
-=head2 name
-
-Getter/setter for the animal's name. Setters return self for
-operation chaining.
+Used to record the outcome of a single race.
 
 =cut
 
-sub name {
-  my ( $target, $val ) = @_;
+sub won { $incr->( shift, 'wins' ) }
+sub placed { $incr->( shift, 'places' ) }
+sub showed { $incr->( shift, 'shows' ) }
+sub losses { $incr->( shift, 'losses' ) }
 
-  if ( ref $target ) {
-    $target->( name => $val )
-  }
-  else {
-    croak "Anonymous $target can't be named" if defined $val;
-    return "an unnamed $target";
-  }
+=head2 standings
+
+A human-readable record of the standings of the racehorse.
+
+=cut
+
+sub standings {
+  my $self = shift;
+
+  join ', ', map $self->( $_ ) . " $_", $self->valid_properties;
 }
 
-=head2 colour
+sub DESTROY {
+  my $self = shift;
 
-Getter/setter for the animal's colour. Setters return self for
-operation chaining.
-
-=cut
-
-sub colour {
-  my ( $target, $val ) = @_;
-
-  if ( ref $target ) {
-    $target->( colour => $val )
-  }
-  else {
-    croak "Anonymous $target can't have its colour changed" if defined $val;
-    return $target->default_colour;
-  }
-}
-
-=head2 speak
-
-Prints the noise this animal makes to STDOUT.
-
-=cut
-
-sub speak {
-  my $target = shift;
-
-  $target->SUPER::speak;
+  $HORSES{$self->name} = join ' ', map $self->( $_ ), $self->valid_properties;
+  $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
 }
 
 =head1 AUTHOR
@@ -134,15 +97,18 @@ Robert Durie, C<< <robbiedurie at hotmail.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
+
+
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc RaceHorse
 
 
 You can also look for information at:
@@ -151,19 +117,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -214,4 +180,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of RaceHorse
