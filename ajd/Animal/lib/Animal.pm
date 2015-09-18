@@ -41,7 +41,7 @@ sub new {
 
   my $data = {
     name => $name // "a nameless $class",
-    colour => $colour // $class->default_colour();
+    colour => $colour // $class->default_colour(),
   };
 
   return bless( $data, $class );
