@@ -31,22 +31,17 @@ Perhaps a little code snippet.
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+if you don&#39;t export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
 
 =cut
 
-sub function1 {
-}
 
-=head2 function2
-
-=cut
-
-sub function2 {
+sub sound {
+    return "hmmmmmm";
 }
 
 =head1 AUTHOR
@@ -138,8 +133,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-sub sound {
-    return "hmmmmmm";
-}
 
 1;    # End of Person

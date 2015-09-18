@@ -3,6 +3,7 @@ Changes
 lib/Animal.pm
 lib/Cow.pm
 lib/Horse.pm
+lib/Horse/RaceHorse.pm
 lib/LivingCreature.pm
 lib/Mouse.pm
 lib/Person.pm
@@ -13,11 +14,16 @@ META.json
 META.yml
 README
 scripts/ch13exercise2.pl
+scripts/colour-tester.pl
 scripts/person.pl
 t/00-load.t
+t/Animal.t
+t/Cow.t
+t/Horse.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/Sheep.t
 t/t
 t/xt
 xt/boilerplate.t
