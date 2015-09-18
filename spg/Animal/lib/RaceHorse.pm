@@ -1,14 +1,12 @@
-package Animal;
+package RaceHorse;
 
 use 5.006;
 use strict;
 use warnings;
 
-use Carp qw(croak);
-
 =head1 NAME
 
-Animal - The great new Animal!
+RaceHorse - How many races can it win before going to the glue factory?
 
 =head1 VERSION
 
@@ -18,7 +16,9 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use parent qw(LivingCreature);
+use parent qw(Horse);
+use JSON qw( encode_json decode_json );
+use File::Slurp;
 
 =head1 SYNOPSIS
 
@@ -26,9 +26,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use Horse;
 
-    my $foo = Animal->new();
+    my $foo = Horse->new();
     ...
 
 =head1 EXPORT
@@ -38,77 +38,12 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new
-
-=cut
-
-sub new {
-  my ( $class, $name, $colour ) = @_;
-
-  $colour = default_colour() unless defined $colour;
-
-  return bless { name => $name, colour => $colour }, $class;
-
-}
-
-=head2 set_name
-
-=cut
-
-sub set_name {
-  ref $_[0] or croak "Cannot set name of generic thing";
-  $_[0]->{name} = $_[1];
-  return $_[0];
-}
-
-=head2 name
-
-=cut
-
-sub name {
-  return ref $_[0] ? $_[0]->{name} : "An unamed $_[0]";
-}
-
-=head2 set_colour
-
-=cut
-
-sub set_colour {
-  ref $_[0] or croak "Cannot set colour of generic thing";
-  $_[0]->{colour} = $_[1];
-  return $_[0];
-}
-
-=head2 colour
-
-=cut
-
-sub colour {
-  return ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour();
-}
-
-=head2 default_colour
-
-=cut
-
-sub default_colour { 'brown' };
-
-=head2 speak
-
-=cut
-
-sub speak {
-  my ( $self ) = @_;
-
-  printf "%s says \"%s\"!\n", $self->get_type(), $self->get_voice();
-}
-
 =head2 get_type
 
 =cut
 
 sub get_type {
-  return "Unknown beast, shrouded in darkness,";
+  return "RaceHorse";
 }
 
 =head2 get_voice
@@ -116,12 +51,58 @@ sub get_type {
 =cut
 
 sub get_voice {
-  return "welcome to the jungle";
+  return "strong neigh";
+}
+
+my $file = "stats.json";
+my @stats = qw( wins places shows losses );
+
+sub new {
+  my $self = shift->SUPER::new(@_);
+
+  my $stats_data;
+
+  if ( -e $file ) {
+    eval {
+      $stats_data = decode_json( scalar( read_file( $file ) ) );
+    };
+    if ( $@ ) {
+      print "Invalid JSON: $@";
+      $stats_data = map { $_ => 0 } @stats;
+    }
+  }
+  else {
+    $stats_data = map { $_ => 0 } @stats;
+  }
+
+  @{$self}{@stats} = @{$stats_data}{@stats};
+
+  $self;
+}
+
+sub won { $_[0]->{wins}++; }
+
+sub placed { $_[0]->{places}++; }
+
+sub showed { $_[0]->{shows}++; }
+
+sub lost { $_[0]->{losses}++; }
+
+sub standings {
+  my ( $self ) = @_;
+  join ', ', map "$self->{$_} $_", @stats;
 }
 
 sub DESTROY {
-  my $self = shift;
-  print '[', $self->name, " has died.]\n";
+
+  my $stats;
+
+  @{$stats}{ keys %{$_[0]} } = @{$_[0]}{ keys %{$_[0]} };
+
+  my $json = encode_json( $stats );
+  write_file( "stats.json", $json );
+
+  $_[0]->SUPER::DESTROY if $_[0]->can( 'SUPER::DESTROY' );
 }
 
 =head1 AUTHOR
@@ -130,8 +111,8 @@ spg, C<< <simon.gross at datacash.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -141,7 +122,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Horse
 
 
 You can also look for information at:
@@ -150,19 +131,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -172,7 +153,7 @@ L<http://search.cpan.org/dist/Animal/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2015 spg.
+Copyright 2015 Simon Gross.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -213,4 +194,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Horse
