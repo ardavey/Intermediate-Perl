@@ -4,9 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose;
+use namespace::autoclean;
+
+with 'Animal';
+
 =head1 NAME
 
-Cow - The great new Cow!
+Cow - Milkiest of all the beasts 
 
 =head1 VERSION
 
@@ -16,7 +21,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-use parent qw(Animal);
 
 =head1 SYNOPSIS
 
@@ -36,7 +40,19 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 default_colour
+
+And red all over
+
+=cut
+
+sub default_colour {
+  return "black n' white";
+}
+
 =head2 get_type
+
+A cow
 
 =cut
 
@@ -45,6 +61,8 @@ sub get_type {
 }
 
 =head2 get_voice
+
+A cow sound
 
 =cut
 

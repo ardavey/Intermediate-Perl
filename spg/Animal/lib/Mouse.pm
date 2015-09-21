@@ -4,9 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose;
+use namespace::autoclean;
+
+with 'Animal';
+
 =head1 NAME
 
-Mouse - The great new Mouse!
+Mouse - Squeakiest of all the beasts.
 
 =head1 VERSION
 
@@ -15,8 +20,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
-use parent qw(Animal);
 
 =head1 SYNOPSIS
 
@@ -36,19 +39,25 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
+=cut
+
+after 'speak' => sub {
+  print "[but you can barely hear it!]\n";
+};
+
+=head2 default_colour
+
+Three grey mice, see how they run
 
 =cut
 
-sub speak {
-  my ( $self ) = @_;
-
-  printf "%s says \"%s\"!\n", $self->get_type(), $self->get_voice();
-
-  printf "...but you can barely hear it!\n";
+sub default_colour {
+  return "grey";
 }
 
 =head2 get_type
+
+A mouse
 
 =cut
 
@@ -57,6 +66,8 @@ sub get_type {
 }
 
 =head2 get_voice
+
+A mouse noise
 
 =cut
 
