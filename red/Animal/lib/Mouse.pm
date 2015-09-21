@@ -1,10 +1,10 @@
 package Mouse;
 
-use v5.10.1;
-use strict;
-use warnings;
+use v5.16;
+use Moose;
+use namespace::autoclean;
 
-use parent qw( Animal );
+with 'Animal';
 
 =head1 NAME
 
@@ -46,12 +46,11 @@ A mouse will speak a little more quietly than your typical animal.
 
 =cut
 
-sub speak {
-  my $class = shift;
-
-  $class->SUPER::speak( @_ );
+after speak => sub {
   print "[but you can barely hear it!]\n";
-}
+};
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

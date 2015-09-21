@@ -1,8 +1,8 @@
 package LivingCreature;
 
-use 5.10.1;
-use strict;
-use warnings;
+use v5.16;
+use Moose::Role;
+use namespace::autoclean;
 
 =head1 NAME
 
@@ -15,7 +15,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
 
 =head1 SYNOPSIS
 
@@ -57,7 +56,7 @@ Returns a string representation of the sound the LivingCreature would make.
 
 =cut
 
-sub sound { die shift . '::sound has not been implemented' }
+requires 'sound';
 
 =head1 AUTHOR
 

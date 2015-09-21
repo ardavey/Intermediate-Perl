@@ -1,11 +1,9 @@
 package Animal;
 
 use v5.16;
-use strict;
-use warnings;
-
-use parent qw( LivingCreature );
-use Carp qw( croak );
+use Moose::Role;
+use namespace::autoclean;
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -35,98 +33,12 @@ This simulates the behaviour of animals.
 
 =head2 new
 
-Spawn an animal with unique features. If the animal has
-unique properties, these will be obtained via the
-C<valid_properties> class method.
+Spawn an animal with unique features.
 
 =cut
 
-sub new {
-  my ( $class, %attr ) = @_;
-
-  my %animal = (
-    name => $attr{name},
-    colour => $attr{colour} // $class->default_colour
-    );
-
-  if ( my $get = $class->can( 'valid_properties' ) ) {
-    my %props = map { $_ => $attr{$_} } &$get;
-    @animal{keys %props} = values %props;
-  }
-
-  bless sub {
-    my ( $prop, $val ) = @_;
-
-    if ( !exists $animal{$prop} ) {
-      croak "$class doesn't have property $prop";
-    }
-
-    if ( defined $val ) {
-      $animal{$prop} = $val;
-      return __SUB__;
-    }
-
-    return $animal{$prop};
-  }, $class;
-}
-
-=head2 default_colour
-
-The default colour for the animal.
-
-=cut
-
-sub default_colour { 'brown' }
-
-=head2 name
-
-Getter/setter for the animal's name. Setters return self for
-operation chaining.
-
-=cut
-
-sub name {
-  my ( $target, $val ) = @_;
-
-  if ( ref $target ) {
-    $target->( name => $val )
-  }
-  else {
-    croak "Anonymous $target can't be named" if defined $val;
-    return "an unnamed $target";
-  }
-}
-
-=head2 colour
-
-Getter/setter for the animal's colour. Setters return self for
-operation chaining.
-
-=cut
-
-sub colour {
-  my ( $target, $val ) = @_;
-
-  if ( ref $target ) {
-    $target->( colour => $val )
-  }
-  else {
-    croak "Anonymous $target can't have its colour changed" if defined $val;
-    return $target->default_colour;
-  }
-}
-
-=head2 speak
-
-Prints the noise this animal makes to STDOUT.
-
-=cut
-
-sub speak {
-  my $target = shift;
-
-  $target->SUPER::speak;
-}
+has name => ( is => 'rw', isa => 'Str' );
+has colour => ( is => 'rw', isa => 'Str', default => 'brown' );
 
 =head1 AUTHOR
 

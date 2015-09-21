@@ -1,10 +1,10 @@
 package Sheep;
 
-use v5.10.1;
-use strict;
-use warnings;
+use v5.16;
+use Moose;
+use namespace::autoclean;
 
-use parent qw( Animal );
+with 'Animal';
 
 =head1 NAME
 
@@ -29,13 +29,6 @@ Simulation of those weird fluffy cloud-beasts.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 default_colour
-
-The default colour a sheep will typically be.
-
-=cut
-
-sub default_colour { 'white' }
 
 =head2 sound
 
@@ -44,6 +37,9 @@ The sound a sheep might make.
 =cut
 
 sub sound { 'baaaah' }
+has colour => ( is => 'rw', isa => 'Str', default => 'white' );
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

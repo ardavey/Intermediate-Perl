@@ -6,14 +6,17 @@ BEGIN {
   diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );
 }
 
-throws_ok { Animal->sound } qr/Animal::sound has not been implemented/,
-  "Abstract animals can't make a sound";
-
-throws_ok { Animal->speak } qr/Animal::sound has not been implemented/,
-  "Abstract animals can't speak";
+throws_ok {
+  package Squid {
+    use Moose;
+    with qw( Animal );
+  }
+} qr/'Animal' requires the method 'sound' to be implemented by 'Squid'/,
+  'Classes with role Animal fail without sound';
 
 package Walrus {
-  use parent qw( Animal );
+  use Moose;
+  with qw( Animal );
   sub sound { 'Groaargh!' }
 }
 
