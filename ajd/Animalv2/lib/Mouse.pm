@@ -39,7 +39,7 @@ Makes a mouse sound
 
 =cut
 
-has 'sound' => ( is => 'ro', default => 'neigh' );
+has 'sound' => ( is => 'ro', default => 'squeak' );
 
 after 'speak' => sub {
   print "[but you can barely hear it!]\n";
