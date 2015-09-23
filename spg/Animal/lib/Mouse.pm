@@ -75,6 +75,8 @@ sub get_voice {
   return "squeak";
 }
 
+__PACKAGE__->meta->make_immutable;
+
 =head1 AUTHOR
 
 spg, C<< <simon.gross at datacash.com> >>

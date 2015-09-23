@@ -81,6 +81,8 @@ sub DESTROY {
   print "[", $self->name, " has gone off to the glue factory.]\n";
 }
 
+__PACKAGE__->meta->make_immutable;
+
 =head1 AUTHOR
 
 spg, C<< <simon.gross at datacash.com> >>

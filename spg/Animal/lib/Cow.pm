@@ -70,6 +70,8 @@ sub get_voice {
   return "mooooooo";
 }
 
+__PACKAGE__->meta->make_immutable;
+
 =head1 AUTHOR
 
 spg, C<< <simon.gross at datacash.com> >>
