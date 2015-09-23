@@ -20,6 +20,7 @@ ok( defined &Animal::speak, 'Animal::speak is defined' );
   use Test::Output;
   sub get_voice { 'foof' };
   sub get_type { 'Foofle' };
+  sub default_colour { 'pink' };
 
   stdout_is(
     sub { Foofle->speak() },

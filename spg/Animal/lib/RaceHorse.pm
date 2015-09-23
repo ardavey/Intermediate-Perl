@@ -83,19 +83,20 @@ sub new {
 
   @{$self}{@stats} = @{$stats_data}{@stats};
 
-  $self;
+  return $self;
 }
 
 sub DESTROY {
+  my ( $self ) = @_;
 
   my $stats;
 
-  @{$stats}{ keys %{$_[0]} } = values %{$_[0]};
+  @{$stats}{ keys %{$self} } = values %{$self};
 
   my $json = encode_json( $stats );
   write_file( $file, $json );
 
-  $_[0]->SUPER::DESTROY if $_[0]->can( 'SUPER::DESTROY' );
+  $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
 }
 
 __PACKAGE__->meta->make_immutable;
