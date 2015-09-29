@@ -1,10 +1,10 @@
 package Person;
 
-use 5.10.1;
-use strict;
-use warnings;
+use v5.16;
+use Moose;
+use namespace::autoclean;
 
-use parent qw( LivingCreature );
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -38,6 +38,8 @@ A typical sound you might hear a human generate.
 =cut
 
 sub sound { 'hummmmm' }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

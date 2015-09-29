@@ -1,10 +1,11 @@
 package RaceHorse;
 
-use 5.006;
-use strict;
-use warnings;
+use v5.16;
+use Moose;
 use Carp;
-use parent 'Horse';
+use namespace::autoclean;
+
+extends 'Horse';
 
 =head1 NAME
 
@@ -33,11 +34,8 @@ Maintains the records of a race Horse.
 
 =cut
 
-sub valid_properties { qw( wins places shows losses ) }
-my $incr = sub {
-  my ( $target, $prop ) = @_;
-  return $target->( $prop, $target->( $prop ) + 1 );
-};
+my @properties = qw( wins places shows losses );
+has $_ => ( is => 'rw', default => 0 ) for @properties;
 
 =head2 new
 
@@ -46,31 +44,33 @@ the instance for more races.
 
 =cut
 
-sub new {
-  my $class = shift;
-  my $self = $class->SUPER::new( @_ );
+sub BUILD {
+  my $self = shift;
 
-  my @props = $class->valid_properties;
-  my $record = $HORSES{$self->name} // '0 ' x @props;
-  my @cols = split ' ', $record;
+  if ( defined $HORSES{$self->name} ) {
+    my @cols = split ' ', $HORSES{$self->name};
 
-  for ( @props ) {
-    $self->( $_, shift @cols );
+    for ( @properties ) {
+      $self->$_( shift @cols )
+    }
   }
-
-  $self
 }
 
-=head2 won/placed/showed/losses
+=head2 won/placed/showed/lost
 
 Used to record the outcome of a single race.
 
 =cut
 
+my $incr = sub {
+  my ( $self, $prop ) = @_;
+  $self->$prop( $self->$prop + 1 )
+};
+
 sub won { $incr->( shift, 'wins' ) }
 sub placed { $incr->( shift, 'places' ) }
 sub showed { $incr->( shift, 'shows' ) }
-sub losses { $incr->( shift, 'losses' ) }
+sub lost { $incr->( shift, 'losses' ) }
 
 =head2 standings
 
@@ -81,15 +81,16 @@ A human-readable record of the standings of the racehorse.
 sub standings {
   my $self = shift;
 
-  join ', ', map $self->( $_ ) . " $_", $self->valid_properties;
+  join ', ', map $self->$_ . " $_", @properties;
 }
 
-sub DESTROY {
+sub DEMOLISH {
   my $self = shift;
 
-  $HORSES{$self->name} = join ' ', map $self->( $_ ), $self->valid_properties;
-  $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
+  $HORSES{$self->name} = join ' ', map $self->$_, @properties;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

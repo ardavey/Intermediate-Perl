@@ -1,10 +1,10 @@
 package Horse;
 
-use v5.10.1;
-use strict;
-use warnings;
+use v5.16;
+use Moose;
+use namespace::autoclean;
 
-use parent qw( Animal );
+with 'Animal';
 
 =head1 NAME
 
@@ -36,6 +36,8 @@ The noise a horse makes. Is it particularly accurate? Neigh.
 =cut
 
 sub sound { 'neigh' }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

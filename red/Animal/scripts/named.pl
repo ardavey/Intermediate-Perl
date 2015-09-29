@@ -6,9 +6,11 @@ use warnings;
 use Horse;
 use Sheep;
 
-my $tv_horse = new Horse( name => 'Mr. Ed' )
-  ->name('Mister Ed')
-  ->colour('grey');
+my $tv_horse = Horse->new( name => 'Mr. Ed' );
+$tv_horse->name('Mister Ed');
+$tv_horse->colour('grey');
 
 print $tv_horse->name, ' is ', $tv_horse->colour, "\n";
-print Sheep->name, ' colored ', Sheep->colour, ' goes ', Sheep->sound, "\n";
+
+# Sorry package method enthusiasts, only instances supported.
+# print Sheep->name, ' colored ', Sheep->colour, ' goes ', Sheep->sound, "\n";
