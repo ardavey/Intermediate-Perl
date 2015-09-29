@@ -4,9 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose;
+use namespace::autoclean;
+
+with 'Animal';
+
 =head1 NAME
 
-Horse - The great new Horse!
+Horse - Fastest of all the beasts...that we have here
 
 =head1 VERSION
 
@@ -15,8 +20,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
-use parent qw(Animal);
 
 =head1 SYNOPSIS
 
@@ -36,7 +39,19 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 default_colour
+
+How now brown howse
+
+=cut
+
+sub default_colour {
+  return "brown";
+}
+
 =head2 get_type
+
+A horse
 
 =cut
 
@@ -46,17 +61,27 @@ sub get_type {
 
 =head2 get_voice
 
+A horse sound
+
 =cut
 
 sub get_voice {
   return "neigh";
 }
 
+=head2 DESTROY
+
+Doing the right thing and recycling
+
+=cut
+
 sub DESTROY {
   my $self = shift;
   $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
   print "[", $self->name, " has gone off to the glue factory.]\n";
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

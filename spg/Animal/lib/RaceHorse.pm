@@ -4,6 +4,12 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose;
+use namespace::autoclean;
+
+extends 'Horse';
+with 'Racer';
+
 =head1 NAME
 
 RaceHorse - How many races can it win before going to the glue factory?
@@ -77,33 +83,23 @@ sub new {
 
   @{$self}{@stats} = @{$stats_data}{@stats};
 
-  $self;
-}
-
-sub won { $_[0]->{wins}++; }
-
-sub placed { $_[0]->{places}++; }
-
-sub showed { $_[0]->{shows}++; }
-
-sub lost { $_[0]->{losses}++; }
-
-sub standings {
-  my ( $self ) = @_;
-  join ', ', map "$self->{$_} $_", @stats;
+  return $self;
 }
 
 sub DESTROY {
+  my ( $self ) = @_;
 
   my $stats;
 
-  @{$stats}{ keys %{$_[0]} } = @{$_[0]}{ keys %{$_[0]} };
+  @{$stats}{ keys %{$self} } = values %{$self};
 
   my $json = encode_json( $stats );
-  write_file( "stats.json", $json );
+  write_file( $file, $json );
 
-  $_[0]->SUPER::DESTROY if $_[0]->can( 'SUPER::DESTROY' );
+  $self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

@@ -4,9 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose;
+use namespace::autoclean;
+
+with 'Animal';
+
 =head1 NAME
 
-Sheep - The great new Sheep!
+Sheep - The fluffiest of all the beasts
 
 =head1 VERSION
 
@@ -15,8 +20,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
-use parent qw(Animal);
 
 =head1 SYNOPSIS
 
@@ -38,11 +41,15 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head2 default_colour
 
+get_voice, get_voice, default_colour, get_type
+
 =cut
 
-sub default_colour { 'white' };
+sub default_colour { 'black' };
 
 =head2 get_type
+
+A sheep
 
 =cut
 
@@ -52,11 +59,15 @@ sub get_type {
 
 =head2 get_voice
 
+A sheep noise
+
 =cut
 
 sub get_voice {
   return "baaaaa";
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 

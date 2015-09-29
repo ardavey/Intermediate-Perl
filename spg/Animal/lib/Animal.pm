@@ -4,11 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
-use Carp qw(croak);
+use Moose::Role;
+use namespace::autoclean;
+
+requires qw( default_color get_type get_voice );
 
 =head1 NAME
 
-Animal - The great new Animal!
+Animal - The Basic Beast
 
 =head1 VERSION
 
@@ -17,8 +20,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
-use parent qw(LivingCreature);
 
 =head1 SYNOPSIS
 
@@ -31,6 +32,28 @@ Perhaps a little code snippet.
     my $foo = Animal->new();
     ...
 
+=head1 MOOSE
+
+=head2 name
+
+Name of the animal
+
+=cut
+
+has 'name'  => ( is => 'rw' );
+
+=head2 colour
+
+Colour of the animal
+
+=cut
+
+has 'color' => (
+  is => 'rw',
+  default => sub { shift->default_color }
+);
+
+
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
@@ -38,62 +61,9 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new
-
-=cut
-
-sub new {
-  my ( $class, $name, $colour ) = @_;
-
-  $colour = default_colour() unless defined $colour;
-
-  return bless { name => $name, colour => $colour }, $class;
-
-}
-
-=head2 set_name
-
-=cut
-
-sub set_name {
-  ref $_[0] or croak "Cannot set name of generic thing";
-  $_[0]->{name} = $_[1];
-  return $_[0];
-}
-
-=head2 name
-
-=cut
-
-sub name {
-  return ref $_[0] ? $_[0]->{name} : "An unamed $_[0]";
-}
-
-=head2 set_colour
-
-=cut
-
-sub set_colour {
-  ref $_[0] or croak "Cannot set colour of generic thing";
-  $_[0]->{colour} = $_[1];
-  return $_[0];
-}
-
-=head2 colour
-
-=cut
-
-sub colour {
-  return ref $_[0] ? $_[0]->{colour} : $_[0]->default_colour();
-}
-
-=head2 default_colour
-
-=cut
-
-sub default_colour { 'brown' };
-
 =head2 speak
+
+What does the animal say?
 
 =cut
 
@@ -103,26 +73,18 @@ sub speak {
   printf "%s says \"%s\"!\n", $self->get_type(), $self->get_voice();
 }
 
-=head2 get_type
+=head2 DESTROY
+
+Now, young animal, you will die
 
 =cut
-
-sub get_type {
-  return "Unknown beast, shrouded in darkness,";
-}
-
-=head2 get_voice
-
-=cut
-
-sub get_voice {
-  return "welcome to the jungle";
-}
 
 sub DESTROY {
   my $self = shift;
   print '[', $self->name, " has died.]\n";
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 
