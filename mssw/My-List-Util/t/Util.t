@@ -5,6 +5,7 @@ use warnings;
 
 use Data::Dumper;
 use Test::More;
+use Test::My::List::Util;
 
 BEGIN {
     use_ok('My::List::Util') || print "Bail out!\n";
@@ -16,8 +17,9 @@ ok( defined &My::List::Util::sum,     'My::List::Util::sum is defined' );
 ok( defined &My::List::Util::shuffle, 'My::List::Util::shuffle is defined' );
 
 {    # sum tests
-    is( My::List::Util::sum( 1, 2, 3 ), 6, 'Check sum calculates correctly' );
-    is( My::List::Util::sum(), 0, 'Check sum with empty list' );
+    sum_ok( My::List::Util::sum( 1, 2, 3 ), 6, 'Check sum calculates correctly' );
+    sum_ok( My::List::Util::sum(), 0, 'Check sum with empty list' );
+    sum_ok( My::List::Util::sum(), 0.00, 'Check sum with empty list' );
 }
 
 {    # shuffle tests
