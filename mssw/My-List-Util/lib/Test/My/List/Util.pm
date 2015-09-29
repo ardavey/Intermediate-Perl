@@ -12,7 +12,7 @@ use Test::Builder;
 my $Test = new Test::Builder();
 
 $VERSION = '3.14';
-@EXPORT = qw(sum_ok);
+@EXPORT  = qw(sum_ok);
 
 =head1 NAME
 
@@ -25,7 +25,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
 
 =head1 SYNOPSIS
 
@@ -48,91 +47,93 @@ checks that a list can sum correctly.
 =cut
 
 sub sum_ok {
-    my ( $actual, $expected, $message) = @_;
-    
-    if( !defined $actual && !defined $expected ){
-        $Test->ok(1, $message);
-        return 1;
-    }
-    elsif( !defined $actual ){
-        $Test->diag( "Actual value was not defined, expected [$expected]!\n" );
-        $Test->ok(0, $message);
-        return 0;
-    }
-    elsif( !defined $expected ){
-        $Test->diag( "Actual value was [$actual], expected undefined!\n");
-        $Test->ok(0, $message);
-        return 0;
-    }
-    else{
-        # We have two defined values now.
-        # Lets see if they're both scalars
-        my $actual_ref = ref $actual;
-        my $expected_ref = ref $expected;
-        
-        if( $actual_ref && $expected_ref ){
-            # we have two references for some reason....
-            if( $actual_ref eq $expected_ref){
-                # They're both the same type of reference, so lets just say they're the same.
-                $Test->diag( "Returning ok for two matching reference types - [$actual_ref]!\n");
-                $Test->ok(1, $message);
-                return 1;
-            }
-            else{
-                # We have two differing reference types
-                $Test->diag( "Actual value ref[$actual_ref] does not match expected value ref[$expected_ref]!\n");
-                $Test->ok(0, $message);
-                return 0;
-            }
-        }
-        elsif( $actual_ref ){
-            $Test->diag( "Actual value ref[$actual_ref] does not match expected value [$expected]!\n" );
-            $Test->ok(0, $message);
-            return 0;
-        }
-        elsif( $expected_ref ){
-            $Test->diag( "Actual value [$actual] does not match expected value ref[$expected_ref]!\n" );
-            $Test->ok(0, $message);
-            return 0;
-        }
-        else{
-            # We have two scalars \o/
-            # Now lets check they're both numbers
-             my $regex = qr/^\d+\.?\d*$/;
-            my $actual_regex = $actual =~ $regex;
-            my $expected_regex = $expected =~ $regex;
-            if( !$actual_regex || ! $expected_regex ){
-                # One or both might not be a number, so lets compare them as strings
-                if( $actual eq $expected ){
-                    $Test->ok(1, $message);
-                    return 1;
-                }
-                else{
-                    $Test->diag( "Actual value [$actual] does not equal expected value [$expected]!\n");
-                    $Test->ok(0, $message);
-                    return 0;
-                }
-            
-            }
-            else{
-                # We should now have 2 numbers!!
-                if( $actual eq $expected){
-                    $Test->ok(1, $message);
-                    return 1;
-                }
-                else{
-                    $Test->diag( "Actual value [$actual] does not equal expected value [$expected]!\n");
-                    $Test->ok( 0, $message);
-                    return 0;
-                }
-            }
-        }
-    }
-    $Test->diag( "We somehow failed to compare anything!\n");
-    $Test->ok( 0, $message);
-    return 0;
-}
+  my ( $actual, $expected, $message ) = @_;
 
+  if ( !defined $actual && !defined $expected ) {
+    $Test->ok( 1, $message );
+    return 1;
+  }
+  elsif ( !defined $actual ) {
+    $Test->diag( "Actual value was not defined, expected [$expected]!\n" );
+    $Test->ok( 0, $message );
+    return 0;
+  }
+  elsif ( !defined $expected ) {
+    $Test->diag( "Actual value was [$actual], expected undefined!\n" );
+    $Test->ok( 0, $message );
+    return 0;
+  }
+  else {
+    # We have two defined values now.
+    # Lets see if they're both scalars
+    my $actual_ref   = ref $actual;
+    my $expected_ref = ref $expected;
+
+    if ( $actual_ref && $expected_ref ) {
+
+      # we have two references for some reason....
+      if ( $actual_ref eq $expected_ref ) {
+
+        # They're both the same type of reference, so lets just say they're the same.
+        $Test->diag( "Returning ok for two matching reference types - [$actual_ref]!\n" );
+        $Test->ok( 1, $message );
+        return 1;
+      }
+      else {
+        # We have two differing reference types
+        $Test->diag( "Actual value ref[$actual_ref] does not match expected value ref[$expected_ref]!\n" );
+        $Test->ok( 0, $message );
+        return 0;
+      }
+    }
+    elsif ( $actual_ref ) {
+      $Test->diag( "Actual value ref[$actual_ref] does not match expected value [$expected]!\n" );
+      $Test->ok( 0, $message );
+      return 0;
+    }
+    elsif ( $expected_ref ) {
+      $Test->diag( "Actual value [$actual] does not match expected value ref[$expected_ref]!\n" );
+      $Test->ok( 0, $message );
+      return 0;
+    }
+    else {
+      # We have two scalars \o/
+      # Now lets check they're both numbers
+      my $regex          = qr/^\d+\.?\d*$/;
+      my $actual_regex   = $actual =~ $regex;
+      my $expected_regex = $expected =~ $regex;
+      if ( !$actual_regex || !$expected_regex ) {
+
+        # One or both might not be a number, so lets compare them as strings
+        if ( $actual eq $expected ) {
+          $Test->ok( 1, $message );
+          return 1;
+        }
+        else {
+          $Test->diag( "Actual value [$actual] does not equal expected value [$expected]!\n" );
+          $Test->ok( 0, $message );
+          return 0;
+        }
+
+      }
+      else {
+        # We should now have 2 numbers!!
+        if ( $actual eq $expected ) {
+          $Test->ok( 1, $message );
+          return 1;
+        }
+        else {
+          $Test->diag( "Actual value [$actual] does not equal expected value [$expected]!\n" );
+          $Test->ok( 0, $message );
+          return 0;
+        }
+      }
+    } ## end else [ if ( $actual_ref && $expected_ref)
+  } ## end else [ if ( !defined $actual ...
+  $Test->diag( "We somehow failed to compare anything!\n" );
+  $Test->ok( 0, $message );
+  return 0;
+} ## end sub sum_ok
 
 =head1 AUTHOR
 
@@ -223,4 +224,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Test::My::List::Util
+1;    # End of Test::My::List::Util
