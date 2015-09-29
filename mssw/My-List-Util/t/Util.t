@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Data::Dumper;
-use Test::More tests => 6;
+use Test::More;
 
 BEGIN {
     use_ok('My::List::Util') || print "Bail out!\n";
@@ -36,3 +36,4 @@ ok( defined &My::List::Util::shuffle, 'My::List::Util::shuffle is defined' );
     }
 }
 
+done_testing();
