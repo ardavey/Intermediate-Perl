@@ -1,15 +1,16 @@
 use Test::More;
 use Test::Number::Delta;
+use Test::My::List::Util qw( sum_ok );
 
 BEGIN {
   use_ok( 'My::List::Util' );
   My::List::Util->import( qw( sum ) );
 }
 
-is( sum( 34, 21, 99 ), 154, 'Small positive numbers sum correctly' );
-is( sum( -33, 2, 0, 12, 5 ), -14, 'Small positive and negatives sum correctly' );
-is( sum(), 0, 'No args should equal 0' );
-is( sum('foo', 9, 'bar', -2), 7,
+sum_ok( sum( 34, 21, 99 ), 154, 'Small positive numbers sum correctly' );
+sum_ok( sum( -33, 2, 0, 12, 5 ), -14, 'Small positive and negatives sum correctly' );
+sum_ok( sum(), 0, 'No args should equal 0' );
+sum_ok( sum('foo', 9, 'bar', -2), 7,
   'String args should be disregarded' );
 delta_ok( sum( 0.74, 0.99, 0.002 ), 1.732,
   'Sum of floats within a reasonable tolerance' );
