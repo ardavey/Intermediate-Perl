@@ -63,7 +63,7 @@ Shuffles things
 =cut
 
 sub shuffle {
-    my $deck = shift;    # $deck is a reference to an array
+    my $deck = shift // []; # $deck is a reference to an array
     return unless @$deck;    # must not be empty!
 
     my $i = @$deck;
@@ -80,7 +80,7 @@ Michael Wambeek, C<< <mikewambeek at hotmail.co.uk> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then youll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -97,7 +97,7 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: CPAns request tracker (report bugs here)
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
 
