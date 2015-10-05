@@ -1,81 +1,35 @@
-package Acme::UTOPIA::Utils;
+package Tie::Cycle;
 
 use 5.006;
 use strict;
 use warnings;
-use Exporter qw( import );
-use vars qw( $a $b );
 
 =head1 NAME
 
-Acme::UTOPIA::Utils
+Tie::Cycle - Lets break my distribution...
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
+
 
 =head1 SYNOPSIS
 
-Utilities for transforming and aggregating lists.
-
-    use Acme::UTOPIA::Utils qw( fold );
-
-    my $params = fold { $a . '&' . $b } @fields;
-
-=head1 EXPORT
-
-fold
-sum
-
-=cut
-
-our @EXPORT_OK = qw( fold sum );
+Does nothing. Seriously.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 fold( BLOCK, LIST )
+=head2 tie
 
-Fold a list through repeated application of the supplied
-block/subroutine.
-
-=cut
-
-sub fold (&@) {
-  my $accumulator = \&{shift @_};
-
-  return do {
-    no strict 'refs';
-
-    my ( $a, $b );
-    my $caller = caller;
-    local *{$caller . '::a'} = \$a;
-    local *{$caller . '::b'} = \$b;
-
-    $a = shift;
-    foreach my $next ( @_ ) {
-      $b = $next;
-      $a = $accumulator->();
-    }
-
-    $a
-  };
-}
-
-=head2 sum( LIST )
-
-Sum the supplied list of numerics. Non-numeric
-values will be ignored.
+Literally don't do a thing.
 
 =cut
 
-sub sum {
-  no warnings 'numeric'; # Non-numeric values are ignored
-  fold { $a + $b } 0.0, @_
-}
+sub tie { }
 
 =head1 AUTHOR
 
@@ -83,8 +37,8 @@ Robert Durie, C<< <robbiedurie at hotmail.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-acme-utopia-utils at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-UTOPIA-Utils>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -94,7 +48,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Acme::UTOPIA::Utils
+    perldoc Tie::Cycle
 
 
 You can also look for information at:
@@ -103,19 +57,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Acme-UTOPIA-Utils>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Acme-UTOPIA-Utils>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Acme-UTOPIA-Utils>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Acme-UTOPIA-Utils/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -166,4 +120,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Acme::UTOPIA::Utils
+1; # End of Tie::Cycle

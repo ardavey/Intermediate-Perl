@@ -1,6 +1,7 @@
 Build.PL
 Changes
 lib/Acme/UTOPIA/Utils.pm
+lib/Tie/Cycle.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json
