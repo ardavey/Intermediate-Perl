@@ -1,5 +1,5 @@
 {
-   "abstract" : "The great new Animal!",
+   "abstract" : "The great new Acme::UTOPIA::Utils!",
    "author" : [
       "Robert Durie <robbiedurie@hotmail.co.uk>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Animal",
+   "name" : "Acme-UTOPIA-Utils",
    "prereqs" : {
       "build" : {
          "requires" : {
@@ -26,36 +26,8 @@
       }
    },
    "provides" : {
-      "Animal" : {
-         "file" : "lib/Animal.pm",
-         "version" : "0.01"
-      },
-      "Cow" : {
-         "file" : "lib/Cow.pm",
-         "version" : "0.01"
-      },
-      "Horse" : {
-         "file" : "lib/Horse.pm",
-         "version" : "0.01"
-      },
-      "LivingCreature" : {
-         "file" : "lib/LivingCreature.pm",
-         "version" : "0.01"
-      },
-      "Mouse" : {
-         "file" : "lib/Mouse.pm",
-         "version" : "0.01"
-      },
-      "Person" : {
-         "file" : "lib/Person.pm",
-         "version" : "0.01"
-      },
-      "RaceHorse" : {
-         "file" : "lib/RaceHorse.pm",
-         "version" : "0.01"
-      },
-      "Sheep" : {
-         "file" : "lib/Sheep.pm",
+      "Acme::UTOPIA::Utils" : {
+         "file" : "lib/Acme/UTOPIA/Utils.pm",
          "version" : "0.01"
       }
    },
