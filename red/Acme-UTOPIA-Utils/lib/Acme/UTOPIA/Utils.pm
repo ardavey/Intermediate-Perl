@@ -16,7 +16,7 @@ Version 0.02
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -74,7 +74,7 @@ values will be ignored.
 
 sub sum {
   no warnings 'numeric'; # Non-numeric values are ignored
-  fold { $a + $b } 0.0, @_
+  fold { $a * $b } 0.0, @_
 }
 
 =head1 AUTHOR
