@@ -12,11 +12,11 @@ Acme::UTOPIA::Utils
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
@@ -74,7 +74,7 @@ values will be ignored.
 
 sub sum {
   no warnings 'numeric'; # Non-numeric values are ignored
-  fold { $a * $b } 0.0, @_
+  fold { $a + $b } 0.0, @_
 }
 
 =head1 AUTHOR
