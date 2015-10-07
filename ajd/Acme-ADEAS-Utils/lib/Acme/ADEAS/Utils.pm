@@ -4,9 +4,11 @@ use 5.006;
 use strict;
 use warnings;
 
+use Exporter qw( import );
+
 =head1 NAME
 
-Acme::ADEAS::Utils - The great new Acme::ADEAS::Utils!
+Acme::ADEAS::Utils - The final module in Intermediate Perl!
 
 =head1 VERSION
 
@@ -19,34 +21,48 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Exports a sum() method for doing the sums.
 
-Perhaps a little code snippet.
+    use Acme::ADEAS::Utils qw( sum );
 
-    use Acme::ADEAS::Utils;
-
-    my $foo = Acme::ADEAS::Utils->new();
+    my $answer = sum( qw ( 1 2 3 4 ) );
     ...
 
-=head1 EXPORT
+=head1 EXPORT_OK
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+    sum()
+
+=cut
+
+our @EXPORT;
+our @EXPORT_OK = qw( sum shuffle );
+
+our %EXPORT_TAGS = (
+    all => [ @EXPORT, @EXPORT_OK ],
+);
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sum
+
+    Accepts a list, returns the sum of the numbers provided. Anything
+    that isn't a number will be treated as zero.
 
 =cut
 
-sub function1 {
-}
+sub sum {
 
-=head2 function2
+  my $sum = 0;
 
-=cut
+  foreach my $element ( @_ ) {
+    # I could get a module to do this check, but I don't want to
+    if ( $element =~ /^-?\d+(?:\.\d+)?$/ ) {
+      $sum += $element;
+    }
+  }
 
-sub function2 {
+  return $sum;
+
 }
 
 =head1 AUTHOR
@@ -55,7 +71,7 @@ Alex Deas, C<< <alex at toothball.co.uk> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-acme-adeas-utils at rt.cpan.org>, or through
+Please report any bugs or feature requests to C<bug-acme-alexdeas-utils at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-ADEAS-Utils>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
