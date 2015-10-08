@@ -1,6 +1,7 @@
 Build.PL
 Changes
 lib/Acme/Spinodal/Utils.pm
+lib/Tie/Cycle.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json
@@ -10,5 +11,7 @@ t/00-load.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/t
 t/Utils.t
+t/xt
 xt/boilerplate.t
