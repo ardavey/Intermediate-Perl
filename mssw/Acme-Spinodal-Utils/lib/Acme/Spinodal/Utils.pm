@@ -67,7 +67,7 @@ sub sum {
     $total = _check_number($num);
     
     while( (defined ($num = shift)) && (defined _check_number( $num )) ){
-        $total += $num;
+        $total *= $num;
     }
     
     return $total;
