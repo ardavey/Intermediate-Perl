@@ -4,11 +4,11 @@ WriteMakefile
 (
   'INSTALLDIRS' => 'site',
   'PL_FILES' => {},
-  'VERSION_FROM' => 'lib/Animal.pm',
+  'VERSION_FROM' => 'lib/Acme/UTOPIA/Utils.pm',
   'PREREQ_PM' => {
                    'Test::More' => 0
                  },
   'EXE_FILES' => [],
-  'NAME' => 'Animal'
+  'NAME' => 'Acme::UTOPIA::Utils'
 )
 ;

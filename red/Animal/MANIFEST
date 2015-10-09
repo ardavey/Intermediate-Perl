@@ -16,6 +16,7 @@ README
 scripts/barnyard.pl
 scripts/named.pl
 scripts/person.pl
+scripts/racehorse.pl
 t/00-load.t
 t/Animal.t
 t/Cow.t
